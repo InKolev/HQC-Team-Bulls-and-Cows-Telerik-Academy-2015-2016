@@ -9,8 +9,8 @@ namespace BullsAndCows
     {
         static int number, attempts;
         static bool notCheated;
-        static SortedList<int, string> klasirane = new SortedList<int, string>();
-        static Random rr = new Random();
+        static SortedList<int, string> scoreboard = new SortedList<int, string>();
+        static Random random = new Random();
         static string ch;
 
         static void WriteAbout()
@@ -21,15 +21,15 @@ namespace BullsAndCows
 
         private static void tryAddToScoreboard()
         {
-            if (klasirane.Count < 5 || klasirane.ElementAt(4).Key > attempts) 
+            if (scoreboard.Count < 5 || scoreboard.ElementAt(4).Key > attempts) 
             {
                 Console.WriteLine("Please enter your name for the top scoreboard: ");
                 string name = Console.ReadLine().Trim();
-                klasirane.Add(attempts, name);
+                scoreboard.Add(attempts, name);
 
-                if (klasirane.Count == 6)
+                if (scoreboard.Count == 6)
                 {
-                    klasirane.RemoveAt(5);
+                    scoreboard.RemoveAt(5);
                 }                    
 
                 DisplayTop();
@@ -60,16 +60,25 @@ namespace BullsAndCows
                 bool[] isBull = new bool[4];
                 int bulls = 0, cows = 0;
                 for (int i = 0; i < 4; i++)
-                    if(isBull[i] = snum[i] == sguess[i]) bulls++;
+                {
+                    if (isBull[i] = snum[i] == sguess[i]) bulls++;
+                }                  
                 
                 int[] digs = new int[10];
-                for (int d = 0; d < 10; d++)
-                    digs[d] = 0;
-                
-                for (int i = 0; i < 4; i++)
-                    if (!isBull[i])
-                        digs[snum[i] - '0']++;
 
+                for (int d = 0; d < 10; d++)
+                {
+                    digs[d] = 0;
+                }
+                                    
+                for (int i = 0; i < 4; i++)
+                {
+                    if (!isBull[i])
+                    {
+                        digs[snum[i] - '0']++;
+                    }                       
+                }
+                    
                 for (int i = 0; i < 4; i++)
                 {
                     if (!isBull[i])
@@ -89,12 +98,12 @@ namespace BullsAndCows
 
         static void DisplayTop()
         {
-            if (klasirane.Count() > 0)
+            if (scoreboard.Count() > 0)
             {
                 Console.WriteLine("Scoreboard:");
                 int i = 1;
                 
-                foreach (var t in klasirane)
+                foreach (var t in scoreboard)
                 {
                     Console.WriteLine("{0}. {1} --> {2} guesses", i, t.Value, t.Key);
                 }
@@ -108,7 +117,7 @@ namespace BullsAndCows
         static void StartNewGame() 
         {
             WriteAbout();
-            number = rr.Next(1000, 10000);
+            number = random.Next(1000, 10000);
             attempts = 1;
             notCheated = true;
             ch = "XXXX";
@@ -117,9 +126,15 @@ namespace BullsAndCows
         static void Cheat() 
         {
             notCheated = false;
-            if (ch.Contains('X')) {
+
+            if (ch.Contains('X')) 
+            {
                 int i;
-                do i = rr.Next(0, 4);
+
+                do 
+                {
+                    i = random.Next(0, 4);
+                }                
                 while (ch[i] != 'X');
 
                 char[] cha = ch.ToCharArray();
@@ -134,7 +149,7 @@ namespace BullsAndCows
         {
             Console.WriteLine("Enter your guess or command: ");
             string line = Console.ReadLine().Trim();
-            Regex patt = new Regex("[1-9][0-9][0-9][0-9]");
+            Regex pattern = new Regex("[1-9][0-9][0-9][0-9]");
                     
             switch (line)
             {
@@ -154,7 +169,7 @@ namespace BullsAndCows
                     return false;
 
                 default:
-                    if (patt.IsMatch(line))
+                    if (pattern.IsMatch(line))
                     {
                         int guess = int.Parse(line);
                         ProcessGuess(guess);
