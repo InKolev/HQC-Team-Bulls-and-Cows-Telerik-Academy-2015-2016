@@ -7,7 +7,7 @@ namespace BullsAndCows
 {
     class BullsAndCowsGame
     {
-        static int number, attempts;
+        static int numberToGuess, guessAttempts;
         static bool cheated;
         static SortedList<int, string> scoreboard = new SortedList<int, string>();
         static Random random = new Random();
@@ -21,11 +21,11 @@ namespace BullsAndCows
 
         private static void tryAddToScoreboard()
         {
-            if (scoreboard.Count < 5 || scoreboard.ElementAt(4).Key > attempts) 
+            if (scoreboard.Count < 5 || scoreboard.ElementAt(4).Key > guessAttempts) 
             {
                 Console.WriteLine("Please enter your name for the top scoreboard: ");
-                string name = Console.ReadLine().Trim();
-                scoreboard.Add(attempts, name);
+                string topScorerName = Console.ReadLine().Trim();
+                scoreboard.Add(guessAttempts, topScorerName);
 
                 if (scoreboard.Count == 6)
                 {
@@ -38,7 +38,7 @@ namespace BullsAndCows
 
         static void ProcessWin() 
         {
-            Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", attempts);
+            Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", guessAttempts);
             
             if (!cheated) 
             {
@@ -50,13 +50,13 @@ namespace BullsAndCows
 
         static void ProcessGuess(int guess)
         {
-            if (guess == number)
+            if (guess == numberToGuess)
             {
                 ProcessWin();
             }
             else
             {
-                string snum = number.ToString(), sguess = guess.ToString();
+                string snum = numberToGuess.ToString(), sguess = guess.ToString();
                 bool[] isBull = new bool[4];
                 int bulls = 0, cows = 0;
                 for (int i = 0; i < 4; i++)
@@ -92,7 +92,7 @@ namespace BullsAndCows
                 }
 
                 Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
-                attempts++;
+                guessAttempts++;
             }
         }
 
@@ -117,8 +117,8 @@ namespace BullsAndCows
         static void StartNewGame() 
         {
             WriteAbout();
-            number = random.Next(1000, 10000);
-            attempts = 1;
+            numberToGuess = random.Next(1000, 10000);
+            guessAttempts = 1;
             cheated = false;
             ch = "XXXX";
         }
@@ -138,7 +138,7 @@ namespace BullsAndCows
                 while (ch[i] != 'X');
 
                 char[] cha = ch.ToCharArray();
-                cha[i] = number.ToString()[i];
+                cha[i] = numberToGuess.ToString()[i];
                 ch = new string(cha);
             }
 
