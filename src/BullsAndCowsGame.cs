@@ -8,7 +8,7 @@ namespace BullsAndCows
     class BullsAndCowsGame
     {
         static int number, attempts;
-        static bool notCheated;
+        static bool cheated;
         static SortedList<int, string> scoreboard = new SortedList<int, string>();
         static Random random = new Random();
         static string ch;
@@ -40,7 +40,7 @@ namespace BullsAndCows
         {
             Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", attempts);
             
-            if (notCheated) 
+            if (!cheated) 
             {
                 tryAddToScoreboard();
             }
@@ -119,13 +119,13 @@ namespace BullsAndCows
             WriteAbout();
             number = random.Next(1000, 10000);
             attempts = 1;
-            notCheated = true;
+            cheated = false;
             ch = "XXXX";
         }
      
         static void Cheat() 
         {
-            notCheated = false;
+            cheated = true;
 
             if (ch.Contains('X')) 
             {
