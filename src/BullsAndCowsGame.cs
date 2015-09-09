@@ -19,7 +19,7 @@ namespace BullsAndCows
             Console.WriteLine("Use 'top' to view the top scoreboard, 'restart' to start a new game and 'help' to cheat and 'exit' to quit the game.");
         }
 
-        private static void tryAddToScoreboard()
+        private static void AddToScoreboard()
         {
             if (scoreboard.Count < 5 || scoreboard.ElementAt(4).Key > guessAttempts) 
             {
@@ -42,7 +42,7 @@ namespace BullsAndCows
             
             if (!cheated) 
             {
-                tryAddToScoreboard();
+                AddToScoreboard();
             }
 
             StartNewGame();
@@ -61,7 +61,10 @@ namespace BullsAndCows
                 int bulls = 0, cows = 0;
                 for (int i = 0; i < 4; i++)
                 {
-                    if (isBull[i] = snum[i] == sguess[i]) bulls++;
+                    if (isBull[i] = snum[i] == sguess[i])
+                    {
+                        bulls++;
+                    }
                 }                  
                 
                 int[] digs = new int[10];
@@ -179,6 +182,7 @@ namespace BullsAndCows
                         Console.WriteLine("Please enter a 4-digit number or");
                         Console.WriteLine("one of the commands: 'top', 'restart', 'help' or 'exit'.");
                     }
+
                     break;
             }
 
@@ -188,7 +192,11 @@ namespace BullsAndCows
         static void Main()
         {
             StartNewGame();
-            while (ReadAction()) ;
+
+            while (true)
+            {
+                ReadAction();
+            }
         }
     }
 }
