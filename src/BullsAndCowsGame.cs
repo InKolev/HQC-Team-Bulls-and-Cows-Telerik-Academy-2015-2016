@@ -11,7 +11,7 @@ namespace BullsAndCows
         static bool cheated;
         static SortedList<int, string> scoreboard = new SortedList<int, string>();
         static Random random = new Random();
-        static string ch;
+        static string cheatHelper;
 
         static void WriteAbout()
         {
@@ -32,7 +32,7 @@ namespace BullsAndCows
                     scoreboard.RemoveAt(5);
                 }                    
 
-                DisplayTop();
+                DisplayTopScores();
             }
         }
 
@@ -61,8 +61,9 @@ namespace BullsAndCows
                 int bulls = 0, cows = 0;
                 for (int i = 0; i < 4; i++)
                 {
-                    if (isBull[i] = snum[i] == sguess[i])
+                    if (snum[i] == sguess[i])
                     {
+                        isBull[i] = true;
                         bulls++;
                     }
                 }                  
@@ -99,7 +100,7 @@ namespace BullsAndCows
             }
         }
 
-        static void DisplayTop()
+        static void DisplayTopScores()
         {
             if (scoreboard.Count() > 0)
             {
@@ -123,14 +124,14 @@ namespace BullsAndCows
             numberToGuess = random.Next(1000, 10000);
             guessAttempts = 1;
             cheated = false;
-            ch = "XXXX";
+            cheatHelper = "XXXX";
         }
      
         static void Cheat() 
         {
             cheated = true;
 
-            if (ch.Contains('X')) 
+            if (cheatHelper.Contains('X')) 
             {
                 int i;
 
@@ -138,14 +139,14 @@ namespace BullsAndCows
                 {
                     i = random.Next(0, 4);
                 }                
-                while (ch[i] != 'X');
+                while (cheatHelper[i] != 'X');
 
-                char[] cha = ch.ToCharArray();
+                char[] cha = cheatHelper.ToCharArray();
                 cha[i] = numberToGuess.ToString()[i];
-                ch = new string(cha);
+                cheatHelper = new string(cha);
             }
 
-            Console.WriteLine("The number looks like {0}.", ch);
+            Console.WriteLine("The number looks like {0}.", cheatHelper);
         }
 
         static bool ReadAction()
@@ -157,7 +158,7 @@ namespace BullsAndCows
             switch (line)
             {
                 case "top":
-                    DisplayTop();    
+                    DisplayTopScores();    
                     break;
                 
                 case "restart":
