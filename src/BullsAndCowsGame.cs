@@ -68,18 +68,18 @@ namespace BullsAndCows
                     }
                 }                  
                 
-                int[] digs = new int[10];
+                int[] digits = new int[10];
 
                 for (int d = 0; d < 10; d++)
                 {
-                    digs[d] = 0;
+                    digits[d] = 0;
                 }
                                     
                 for (int i = 0; i < 4; i++)
                 {
                     if (!isBull[i])
                     {
-                        digs[snum[i] - '0']++;
+                        digits[snum[i] - '0']++;
                     }                       
                 }
                     
@@ -87,10 +87,10 @@ namespace BullsAndCows
                 {
                     if (!isBull[i])
                     {
-                        if (digs[sguess[i] - '0'] > 0)
+                        if (digits[sguess[i] - '0'] > 0)
                         {
                             cows++;
-                            digs[sguess[i] - '0']--;
+                            digits[sguess[i] - '0']--;
                         }
                     }                    
                 }
@@ -141,9 +141,9 @@ namespace BullsAndCows
                 }                
                 while (cheatHelper[i] != 'X');
 
-                char[] cha = cheatHelper.ToCharArray();
-                cha[i] = numberToGuess.ToString()[i];
-                cheatHelper = new string(cha);
+                char[] cheatHelperChars = cheatHelper.ToCharArray();
+                cheatHelperChars[i] = numberToGuess.ToString()[i];
+                cheatHelper = new string(cheatHelperChars);
             }
 
             Console.WriteLine("The number looks like {0}.", cheatHelper);
