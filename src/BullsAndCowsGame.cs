@@ -107,9 +107,9 @@ namespace BullsAndCows
                 Console.WriteLine("Scoreboard:");
                 int i = 1;
                 
-                foreach (var t in scoreboard)
+                foreach (var score in scoreboard)
                 {
-                    Console.WriteLine("{0}. {1} --> {2} guesses", i, t.Value, t.Key);
+                    Console.WriteLine("{0}. {1} --> {2} guesses", i, score.Value, score.Key);
                 }
             }
             else
