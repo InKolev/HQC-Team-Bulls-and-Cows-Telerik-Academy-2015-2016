@@ -5,15 +5,28 @@
     using System.Linq;
     using System.Text;
 
-    internal class Score: IComparable<Score>
+    public class Score : IComparable
     {
         public int NumberOfGuesses { get; set; }
 
         public string PlayerName { get; set; }
 
-        public int CompareTo(Score otherScore)
+        public Score(int guesses, string name)
         {
-            return this.NumberOfGuesses.CompareTo(otherScore.NumberOfGuesses);
+            this.NumberOfGuesses = guesses;
+            this.PlayerName = name;
+        }
+
+        public int CompareTo(Object obj)
+        {
+            if (obj == null)
+            {
+                return 1;
+            }
+
+            var otherScore = obj as Score;
+
+            return -this.NumberOfGuesses.CompareTo(otherScore.NumberOfGuesses);
         }
 
         public override string ToString()

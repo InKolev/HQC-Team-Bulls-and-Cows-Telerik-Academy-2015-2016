@@ -54,7 +54,7 @@
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\INotifier.cs" />
     <Compile Include="Interfaces\IScoreboard.cs" />
-    <Compile Include="Interfaces\ISerializer.cs" />
+    <Compile Include="Interfaces\IScoreSerializer.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

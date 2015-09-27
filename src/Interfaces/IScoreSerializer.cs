@@ -5,10 +5,12 @@
     using System.Linq;
     using System.Text;
 
-    public interface ISerializer
-    {
-        IList<IComparable> Load();
+    using Helpers;
 
-        void Save(IList<IComparable> stuff);
+    public interface IScoreSerializer
+    {
+        ICollection<Score> Load();
+
+        void Save(ICollection<Score> data);
     }
 }
