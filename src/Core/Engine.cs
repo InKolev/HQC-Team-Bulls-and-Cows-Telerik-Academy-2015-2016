@@ -1,19 +1,22 @@
-﻿using System;
+﻿using BullsAndCows.Helpers;
+using BullsAndCows.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BullsAndCows
+namespace BullsAndCows.Core
 {
-    internal class GameEngine
+    internal class Engine
     {
+        public static void Main()
+        {
+            INotifier notifier = new ConsoleNotifier();
+            IScoreboard scoreboard = new Scoreboard();
+            IController actionsController = new ActionsController(notifier, scoreboard);
 
-        public int NumberToGuess { get; set; }
-
-        public int GuessAttempts { get; set; }
-
-        public bool HasCheated { get; set; }
-
-        public string CheatHelper { get; set; }
+            var bullsAndCows = new Game(actionsController);
+            bullsAndCows.Start();
+        }
     }
 }
