@@ -15,5 +15,10 @@
         {
             return this.NumberOfGuesses.CompareTo(otherScore.NumberOfGuesses);
         }
+
+        public override string ToString()
+        {
+            return this.PlayerName + " : " + this.NumberOfGuesses;
+        }
     }
 }

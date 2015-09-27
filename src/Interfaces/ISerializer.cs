@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BullsAndCows.Interfaces
+﻿namespace BullsAndCows.Interfaces
 {
-    interface ISerializer
-    {
-        SortedList<int, string> Load();
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
 
-        void Save(SortedList<int, string> scores);
+    public interface ISerializer
+    {
+        IList<IComparable> Load();
+
+        void Save(IList<IComparable> stuff);
     }
 }

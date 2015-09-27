@@ -4,26 +4,30 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-
-    using BullsAndCows.Interfaces;
     using System.IO;
 
-    internal class Serializer : ISerializer
+    using BullsAndCows.Interfaces;
+    using Helpers;
+
+    internal class ScoreSerializer : ISerializer
     {
         private const string FilePath = @"../../scores.txt";
 
-        public SortedList<int, string> Load()
+        public IList<IComparable> Load()
         {
             throw new NotImplementedException();
         }
 
-        public void Save(SortedList<int, string> scores)
+        public void Save(IList<IComparable> scores)
         {
             var writer = new StreamWriter(FilePath);
 
             using (writer)
             {
-
+                foreach (var score in scores)
+                {
+                    writer.WriteLine(score);
+                }
             }
         }
     }
