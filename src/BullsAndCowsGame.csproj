@@ -42,14 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\BullsAndCowsGame.cs">
+    <Compile Include="Core\Game.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Serializer.cs" />
     <Compile Include="Helpers\ConsoleNotifier.cs" />
-    <Compile Include="Core\Scoreboard.cs" />
+    <Compile Include="Helpers\Scoreboard.cs" />
+    <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\INotifier.cs" />
     <Compile Include="Interfaces\IScoreboard.cs" />
     <Compile Include="Interfaces\ISerializer.cs" />

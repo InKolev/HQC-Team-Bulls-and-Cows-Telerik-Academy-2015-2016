@@ -8,16 +8,15 @@ using BullsAndCows.Interfaces;
 
 namespace BullsAndCows.Core
 {
-    internal class ActionsController
+    internal class ActionsController : IController
     {
-        // Constructors
         public ActionsController(INotifier notifier, IScoreboard scoreboard)
         {
             this.Notifier = notifier;
             this.Scoreboard = scoreboard;
         }
 
-        // Properties
+
         private Random RandomGenerator { get; set; } = new Random();
 
         private Regex FourDigitNumberPattern { get; set; } = new Regex("[1-9][0-9][0-9][0-9]");
@@ -34,7 +33,7 @@ namespace BullsAndCows.Core
 
         private int GuessAttempts { get; set; }
 
-        // Methods
+
         private string GenerateNumber(int digits)
         {
             var generatedNumber = new StringBuilder();
@@ -52,7 +51,7 @@ namespace BullsAndCows.Core
             return generatedNumber.ToString();
         }
 
-        public bool ReadAction(Scoreboard scoreboard)
+        private bool ReadAction()
         {
             this.Notifier.Notify("Guess");
 
@@ -60,32 +59,40 @@ namespace BullsAndCows.Core
 
             switch (input)
             {
+
+                case "START":
+                    {
+                        Initialize();
+                        break;
+                    }
+                case "HELP":
+                    {
+                        ProcessCheat();
+                        break;
+                    }
                 case "TOP":
                     {
                         this.Scoreboard.DisplayTopScores();
                         break;
                     }
-                case "START":
-                    {
-                        StartNewGame();
-                        break;
-                    }
-                case "HELP":
-                    {
-                        HelpTheCheater();
-                        break;
-                    }
                 case "EXIT":
                     {
+                        this.Notifier.Notify("Exit");
                         return false;
+                    }
+                case "COMMANDS":
+                    {
+                        this.Notifier.Notify("Commands");
+                        break;
                     }
                 default:
                     if (this.FourDigitNumberPattern.IsMatch(input))
                     {
-                        ProcessGuess(input, scoreboard);
+                        ProcessGuess(input);
                     }
                     else
                     {
+                        // TODO: Extract to notifier.
                         Console.WriteLine("Please enter a 4-digit number or");
                         Console.WriteLine("one of the commands: 'top', 'restart', 'help' or 'exit'.");
                     }
@@ -96,21 +103,11 @@ namespace BullsAndCows.Core
             return true;
         }
 
-        public void ProcessWin(Scoreboard scoreboard)
-        {
-            Console.WriteLine("Congratulations! You guessed the secret number in {0} attempts.", this.GuessAttempts);
-
-            if (!this.HasCheated)
-            {
-                scoreboard.AddToScoreboard(this.GuessAttempts);
-            }
-        }
-
-        public void ProcessGuess(string guess, Scoreboard scoreboard)
+        private void ProcessGuess(string guess)
         {
             if (guess.Equals(this.NumberToGuess))
             {
-                ProcessWin(scoreboard);
+                ProcessWin();
             }
             else
             {
@@ -128,23 +125,14 @@ namespace BullsAndCows.Core
                     }
                 }
 
+                // TODO: Extract to notifier.
                 Console.WriteLine("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows);
+
                 this.GuessAttempts++;
             }
         }
 
-        public void StartNewGame()
-        {
-            this.Notifier.Notify("Introduction");
-            this.Notifier.Notify("Commands");
-
-            this.NumberToGuess = GenerateNumber(4);
-            this.GuessAttempts = 1;
-            this.CheatHelper = "XXXX";
-            this.HasCheated = false;
-        }
-
-        public void HelpTheCheater()
+        private void ProcessCheat()
         {
             this.HasCheated = true;
 
@@ -163,7 +151,40 @@ namespace BullsAndCows.Core
                 this.CheatHelper = new string(cheatHelperChars);
             }
 
+            // TODO: Extract to notifier.
             Console.WriteLine("The number looks like {0}.", this.CheatHelper);
+        }
+
+        private void ProcessWin()
+        {
+            this.Notifier.Notify("Win");
+
+            if (!this.HasCheated)
+            {
+                this.Scoreboard.AddToScoreboard(this.GuessAttempts);
+            }
+        }
+
+        public void Initialize()
+        {
+            this.Notifier.Notify("Introduction");
+            this.Notifier.Notify("Commands");
+
+            this.NumberToGuess = GenerateNumber(4);
+            this.GuessAttempts = 1;
+
+            this.CheatHelper = "XXXX";
+            this.HasCheated = false;
+        }
+
+        public void Run()
+        {
+            bool isRunning = true;
+
+            while (isRunning)
+            {
+                isRunning = ReadAction();
+            }
         }
     }
 }
