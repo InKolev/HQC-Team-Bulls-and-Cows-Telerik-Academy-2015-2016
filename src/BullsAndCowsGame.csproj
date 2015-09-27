@@ -42,10 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BullsAndCowsGame.cs">
+    <Compile Include="Core\BullsAndCowsGame.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Core\ActionsController.cs" />
+    <Compile Include="Core\Engine.cs" />
+    <Compile Include="Helpers\ConsoleNotifier.cs" />
+    <Compile Include="Core\Scoreboard.cs" />
+    <Compile Include="Interfaces\INotifier.cs" />
+    <Compile Include="Interfaces\IScoreboard.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
