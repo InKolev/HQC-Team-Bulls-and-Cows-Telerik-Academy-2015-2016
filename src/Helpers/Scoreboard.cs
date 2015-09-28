@@ -8,15 +8,23 @@ namespace BullsAndCows.Helpers
 {
     internal class Scoreboard : IScoreboard
     {
-        private SortedList<int, string> Scores { get; set; } = new SortedList<int, string>();
+        public Scoreboard(INotifier notifier)
+        {
+            this.Notifier = notifier;
+        }
 
-        private byte TopPlayersDisplayCount { get; set; } = 5;
+        private INotifier Notifier { get; set; }
+
+        private SortedList<int, string> Scores { get; } = new SortedList<int, string>();
+
+        private byte TopPlayersDisplayCount { get; } = 5;
+
 
         public void AddToScoreboard(int guessAttempts)
         {
             if (this.Scores.Count < this.TopPlayersDisplayCount || this.Scores.ElementAt(4).Key > guessAttempts)
             {
-                Console.WriteLine("Please enter your name for the top scoreboard: ");
+                this.Notifier.Notify("Please enter your name for the scoreboard: ");
 
                 string playerName = Console.ReadLine().Trim();
 
@@ -26,8 +34,6 @@ namespace BullsAndCows.Helpers
                 {
                     this.Scores.RemoveAt(5);
                 }
-
-                DisplayTopScores();
             }
         }
 
@@ -39,12 +45,12 @@ namespace BullsAndCows.Helpers
 
                 foreach (var score in this.Scores)
                 {
-                    Console.WriteLine("{0}. {1} --> {2} guesses", position++, score.Value, score.Key);
+                    this.Notifier.Notify(String.Format("{0}. {1} --> {2} guesses", position++, score.Value, score.Key));
                 }
             }
             else
             {
-                Console.WriteLine("The Scoreboard is empty.");
+                this.Notifier.Notify("The scoreboard is empty.");
             }
         }
     }

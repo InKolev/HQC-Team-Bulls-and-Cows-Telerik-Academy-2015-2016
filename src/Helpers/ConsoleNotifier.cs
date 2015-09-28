@@ -10,36 +10,6 @@ namespace BullsAndCows.Helpers
     {
         private int WindowWidth { get; set; } = Console.WindowWidth;
 
-        private void DisplayStartMessage()
-        {
-            Console.WriteLine("A new game have started. Wish you luck.");
-        }
-
-        private void DisplayExitMessage()
-        {
-            Console.WriteLine("Exiting game...");
-        }
-
-        private void DisplayWinMessage()
-        {
-            Console.WriteLine("Congratulations! You have guessed the secret number.");
-        }
-
-        private void DisplayLoseMessage()
-        {
-            Console.WriteLine("You have reached the maximum guess limit. You can't even finish a Bulls And Cows game. You are as dumb as you look...");
-        }
-
-        private void DisplayEnterGuessOrCommandMessage()
-        {
-            Console.WriteLine("Enter your GUESS or a COMMAND to be executed: ");
-        }
-
-        private void DisplayScoreboardMessage()
-        {
-            Console.WriteLine("Scoreboard: ");
-        }
-
         private void DisplayIntroductionMessage()
         {
             string welcomeMessage = "Welcome to “Bulls and Cows” game. Try to guess my secret 4-digit number. The digits inside the secret number cannot be repeated. Have fun!";
@@ -51,60 +21,30 @@ namespace BullsAndCows.Helpers
 
         private void DisplayCommandsList()
         {
-            Console.WriteLine("\"COMMANDS\" - to display the commands list.");
-            Console.WriteLine("\"START\"    - to start a new game.");
-            Console.WriteLine("\"EXIT\"     - to quit the game and close the application.");
-            Console.WriteLine("\"HELP\"     - to unveil a random secret digit (if you want to be a cheater).");
-            Console.WriteLine("\"TOP\"      - to view the top scoreboard.");
+            Console.WriteLine("\"commands\" - to display the commands list.");
+            Console.WriteLine("\"start\"    - to start a new game.");
+            Console.WriteLine("\"exit\"     - to quit the game and close the application.");
+            Console.WriteLine("\"help\"     - to unveil a random secret digit (if you want to be a cheater).");
+            Console.WriteLine("\"top\"      - to view the top scoreboard.");
         }
 
-        public void Notify(string messageType)
+        public void Notify(string message)
         {
-            switch(messageType)
+            switch (message)
             {
-                case "Guess":
-                    {
-                        DisplayEnterGuessOrCommandMessage();
-                        break;
-                    }
-                case "Introduction":
+                case "IntroductionCall":
                     {
                         DisplayIntroductionMessage();
                         break;
                     }
-                case "Commands":
+                case "CommandsCall":
                     {
                         DisplayCommandsList();
                         break;
                     }
-                case "Win":
-                    {
-                        DisplayWinMessage();
-                        break;
-                    }
-                case "Lose":
-                    {
-                        DisplayLoseMessage();
-                        break;
-                    }
-                case "Start":
-                    {
-                        DisplayStartMessage();
-                        break;
-                    }
-                case "Exit":
-                    {
-                        DisplayExitMessage();
-                        break;
-                    }
-                case "Scoreboard":
-                    {
-                        DisplayScoreboardMessage();
-                        break;
-                    }
                 default:
                     {
-                        Console.WriteLine("Nothing to notify.");
+                        Console.WriteLine(message);
                         break;
                     }
             }

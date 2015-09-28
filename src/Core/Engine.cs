@@ -12,7 +12,7 @@ namespace BullsAndCows.Core
         public static void Main()
         {
             INotifier notifier = new ConsoleNotifier();
-            IScoreboard scoreboard = new Scoreboard();
+            IScoreboard scoreboard = new Scoreboard(notifier);
             IController actionsController = new ActionsController(notifier, scoreboard);
 
             var bullsAndCows = new Game(actionsController);

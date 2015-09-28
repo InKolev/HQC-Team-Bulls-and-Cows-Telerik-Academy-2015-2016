@@ -19,7 +19,6 @@ namespace BullsAndCows.Core
 
         public void Start()
         {
-            this.Controller.Initialize();
             this.Controller.Run();
         }
     }
