@@ -32,7 +32,7 @@ namespace BullsAndCows.Helpers
 
                 string playerName = Console.ReadLine().Trim();
                 Score playerScore = new Score(guessAttempts, playerName);
-                
+
                 this.Scores.Add(playerScore);
                 this.Scores.Sort();
 
@@ -50,11 +50,21 @@ namespace BullsAndCows.Helpers
             if (this.Scores.Count > 0)
             {
                 int position = 1;
+                int padLeftWidth = this.Scores.Max(x => x.PlayerName.Length);
+
+                Console.WriteLine(new String('_', padLeftWidth + 17));
+                Console.Write(new String('-', (padLeftWidth - 3) / 2) +"Player" + new String('-', (padLeftWidth - 3) / 2));
+                Console.WriteLine(new String('-', 5) + "Attempts" + "-");
+                Console.WriteLine();
 
                 foreach (var score in this.Scores)
                 {
-                    this.Notifier.Notify(String.Format("{0}. {1} guesses", position++, score));
+                    this.Notifier.Notify(String.Format("{0}. {1} -- {2} guesses",
+                        position++,
+                        score.PlayerName.PadLeft(padLeftWidth),
+                        score.NumberOfGuesses.ToString().PadRight(2)));
                 }
+                Console.WriteLine(new String('_', padLeftWidth + 17));
             }
             else
             {
