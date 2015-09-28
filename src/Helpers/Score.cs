@@ -1,9 +1,6 @@
 ﻿namespace BullsAndCows.Helpers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     public class Score : IComparable
     {
@@ -26,7 +23,7 @@
 
             var otherScore = obj as Score;
 
-            return -this.NumberOfGuesses.CompareTo(otherScore.NumberOfGuesses);
+            return this.NumberOfGuesses.CompareTo(otherScore.NumberOfGuesses);
         }
 
         public override string ToString()

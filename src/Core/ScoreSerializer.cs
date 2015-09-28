@@ -6,11 +6,16 @@
     using Interfaces;
     using Helpers;
 
+    //maybe make it singleton?
     internal class ScoreSerializer : IScoreSerializer
     {
         private const string FilePath = @"../../scores.txt";
 
-        public ICollection<Score> Load()
+        public ScoreSerializer()
+        {
+        }
+
+        public List<Score> Load()
         {
             List<Score> result = new List<Score>();
             StreamReader reader = new StreamReader(FilePath);
@@ -34,7 +39,7 @@
             return result;
         }
 
-        public void Save(ICollection<Score> scores)
+        public void Save(List<Score> scores)
         {
             var writer = new StreamWriter(FilePath);
 

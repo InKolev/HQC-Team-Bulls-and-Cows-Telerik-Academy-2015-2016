@@ -6,8 +6,8 @@
 
     public interface IScoreSerializer
     {
-        ICollection<Score> Load();
+        List<Score> Load();
 
-        void Save(ICollection<Score> data);
+        void Save(List<Score> data);
     }
 }
