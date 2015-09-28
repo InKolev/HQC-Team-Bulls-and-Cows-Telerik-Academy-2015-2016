@@ -19,7 +19,6 @@ namespace BullsAndCows.Helpers
 
         private byte TopPlayersDisplayCount { get; } = 5;
 
-
         public void AddToScoreboard(int guessAttempts)
         {
             if (this.Scores.Count < this.TopPlayersDisplayCount || this.Scores.ElementAt(4).Key > guessAttempts)
