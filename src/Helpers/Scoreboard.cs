@@ -46,10 +46,7 @@ namespace BullsAndCows.Helpers
         }
 
         public void DisplayTopScores()
-        {
-            //code to be extracted!!!
-            //to add validation at least 3 chats for name
-
+        {            
             if (this.Scores.Count > 0)
             {
                 this.Notifier.DisplayScores(this.Scores);
