@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BullsAndCows.Helpers
 {
-    internal class ConsoleNotifier : INotifier
+    internal class ConsoleNotifier : IScoreNotifier, INotifier
     {
         private int WindowWidth { get; set; } = Console.WindowWidth;
 
@@ -27,6 +27,28 @@ namespace BullsAndCows.Helpers
             Console.WriteLine("\"exit\"     - to quit the game and close the application.");
             Console.WriteLine("\"help\"     - to unveil a random secret digit (if you want to be a cheater).");
             Console.WriteLine("\"top\"      - to view the top scoreboard.");
+        }
+
+        public void DisplayScores(List<Score> scores)
+        {
+            int position = 1;
+            int padLeftWidth = scores.Max(x => x.PlayerName.Length);
+            int scoreBoardWidth = padLeftWidth + 17;
+
+            Console.WriteLine('┌' + new String('─', scoreBoardWidth) + '┐');
+            Console.Write("├─" + new String('─', (int)Math.Ceiling((double)(padLeftWidth - 3) / 2)) + "Player" + new String('─', (padLeftWidth - 3) / 2));
+            Console.WriteLine(new String('─', 4) + "Attempts" + "─┤");
+            Console.WriteLine('│' + new String(' ', scoreBoardWidth) + '│');
+
+            foreach (var score in scores)
+            {
+                this.Notify(String.Format("│{0}. {1} ── {2} guesses│",
+                    position++,
+                    score.PlayerName.PadLeft(padLeftWidth),
+                    score.NumberOfGuesses.ToString().PadRight(2)));
+            }
+
+            Console.WriteLine('└' + new String('─', scoreBoardWidth) + '┘');
         }
 
         public void Notify(string message)

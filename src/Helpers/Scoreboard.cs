@@ -11,7 +11,7 @@ namespace BullsAndCows.Helpers
     {
         private const byte TopPlayersDisplayCount = 10;
 
-        public Scoreboard(INotifier notifier, IScoreSerializer serializer)
+        public Scoreboard(IScoreNotifier notifier, IScoreSerializer serializer)
         {
             this.Notifier = notifier;
             this.Serializer = serializer;
@@ -20,7 +20,7 @@ namespace BullsAndCows.Helpers
 
         private List<Score> Scores { get; set; }
 
-        private INotifier Notifier { get; set; }
+        private IScoreNotifier Notifier { get; set; }
 
         private IScoreSerializer Serializer { get; set; }
 
@@ -52,22 +52,7 @@ namespace BullsAndCows.Helpers
 
             if (this.Scores.Count > 0)
             {
-                int position = 1;
-                int padLeftWidth = this.Scores.Max(x => x.PlayerName.Length);
-
-                Console.WriteLine('┌' + new String('─', padLeftWidth + 17) + '┐');
-                Console.Write("├─" + new String('─', (int)Math.Ceiling((double)(padLeftWidth - 3) / 2)) + "Player" + new String('─', (padLeftWidth - 3) / 2));
-                Console.WriteLine(new String('─', 4) + "Attempts" + "─┤");
-                Console.WriteLine('│' + new String(' ', padLeftWidth + 17) + '│');
-
-                foreach (var score in this.Scores)
-                {
-                    this.Notifier.Notify(String.Format("│{0}. {1} ── {2} guesses│",
-                        position++,
-                        score.PlayerName.PadLeft(padLeftWidth),
-                        score.NumberOfGuesses.ToString().PadRight(2)));
-                }
-                Console.WriteLine('└' + new String('─', padLeftWidth + 17) + '┘');
+                this.Notifier.DisplayScores(this.Scores);
             }
             else
             {
