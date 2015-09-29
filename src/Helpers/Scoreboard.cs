@@ -1,12 +1,9 @@
-﻿using BullsAndCows.Interfaces;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BullsAndCows.Helpers
+﻿namespace BullsAndCows.Helpers
 {
+    using System;
+    using System.Collections.Generic;
+    using Interfaces;
+
     internal class Scoreboard : IScoreboard
     {
         private const byte TopPlayersDisplayCount = 10;
@@ -15,7 +12,7 @@ namespace BullsAndCows.Helpers
         {
             this.Notifier = notifier;
             this.Serializer = serializer;
-            this.Scores = Serializer.Load();
+            this.Scores = this.Serializer.Load();
         }
 
         private List<Score> Scores { get; set; }
