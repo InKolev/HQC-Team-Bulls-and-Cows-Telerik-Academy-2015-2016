@@ -11,7 +11,7 @@ namespace BullsAndCows.Core
     {
         public static void Main()
         {
-            ConsoleNotifier notifier = new ConsoleNotifier();
+            var notifier = new ConsoleNotifier();
             IScoreboard scoreboard = new Scoreboard(notifier, new ScoreSerializer());
             IController actionsController = new ActionsController(notifier, scoreboard);
 

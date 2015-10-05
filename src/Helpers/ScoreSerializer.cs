@@ -1,10 +1,8 @@
-﻿namespace BullsAndCows.Core
+﻿namespace BullsAndCows.Helpers
 {
     using System.Collections.Generic;
     using System.IO;
-
     using Interfaces;
-    using Helpers;
 
     //maybe make it singleton?
     internal class ScoreSerializer : IScoreSerializer

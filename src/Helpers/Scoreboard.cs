@@ -23,7 +23,7 @@
 
         public void AddToScoreboard(int guessAttempts)
         {
-            if (this.Scores.Count < TopPlayersDisplayCount || this.Scores[4].NumberOfGuesses > guessAttempts)
+            if (this.Scores.Count < TopPlayersDisplayCount || this.Scores[TopPlayersDisplayCount - 1].NumberOfGuesses > guessAttempts)
             {
                 this.Notifier.Notify("Please enter your name for the scoreboard: ");
 

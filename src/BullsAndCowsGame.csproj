@@ -47,7 +47,7 @@
     </Compile>
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Engine.cs" />
-    <Compile Include="Core\ScoreSerializer.cs">
+    <Compile Include="Helpers\ScoreSerializer.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Helpers\ConsoleNotifier.cs" />
