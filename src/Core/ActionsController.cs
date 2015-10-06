@@ -19,7 +19,7 @@ namespace BullsAndCows.Core
             this.GuessAttemptsMaxValue = 25;
         }
 
-        private Random RandomGenerator { get; set; } 
+        private Random RandomGenerator { get; set; }
 
         private Regex FourDigitNumberPattern { get; set; }
 
@@ -35,7 +35,7 @@ namespace BullsAndCows.Core
 
         private int GuessAttempts { get; set; }
 
-        private int GuessAttemptsMaxValue { get; set; } 
+        private int GuessAttemptsMaxValue { get; set; }
 
         private bool ReadAction()
         {
@@ -98,16 +98,20 @@ namespace BullsAndCows.Core
             return true;
         }
 
+        private bool FourDigitNumberHasRepeatingDigits(string number)
+        {
+            foreach (var digit in number)
+            {
+            }
+            return true;
+        }
+
         private bool ProcessGuess(string guess)
         {
             if (guess.Equals(this.NumberToGuess))
             {
                 ProcessWin();
                 return true;
-            }
-            else if (false)
-            {
-
             }
             else
             {
@@ -125,12 +129,37 @@ namespace BullsAndCows.Core
                     }
                 }
 
-                this.Notifier.Notify(String.Format("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows));
-
-                this.GuessAttempts++;
+                var hasRepetitions = NumberHasRepetitions(guess);
+            
+                if (hasRepetitions)
+                {
+                    this.Notifier.Notify("Incorrect number. The guess cannot contain repeatable digits.");
+                }
+                else
+                {
+                    this.GuessAttempts++;
+                    this.Notifier.Notify(String.Format("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows));
+                }
             }
 
             return false;
+        }
+
+        private bool NumberHasRepetitions(string guess)
+        {
+            int[] repeatedDigits = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+            for (int i = 0; i < this.NumberToGuess.Length; i++)
+            {
+                var position = int.Parse(guess[i].ToString());
+
+                if (guess.Contains(guess[i]))
+                {
+                    repeatedDigits[position]++;
+                }
+            }
+
+            return repeatedDigits.Any(x => x > 1);
         }
 
         private void ProcessCheat()
