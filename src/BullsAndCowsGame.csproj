@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{329FB67C-6AEC-4593-ABCB-DE811A8949C1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BullsCows</RootNamespace>
+    <RootNamespace>BullsAndCows</RootNamespace>
     <AssemblyName>BullsCows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -42,8 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Core\Game.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Core\ActionsController.cs" />
+    <Compile Include="Core\Engine.cs" />
+    <Compile Include="Helpers\ScoreSerializer.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Helpers\ConsoleNotifier.cs" />
+    <Compile Include="Helpers\Score.cs" />
+    <Compile Include="Helpers\Scoreboard.cs" />
+    <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Interfaces\INotifier.cs" />
+    <Compile Include="Interfaces\IScoreboard.cs" />
+    <Compile Include="Interfaces\IScoreNotifier.cs" />
+    <Compile Include="Interfaces\IScoreSerializer.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

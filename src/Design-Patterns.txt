@@ -1,0 +1,2 @@
+Bridge (Scoreboard, Notifier ----> Actions Controller)
+Facade (Todo)
