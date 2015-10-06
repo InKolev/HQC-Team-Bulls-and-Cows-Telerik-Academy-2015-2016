@@ -7,7 +7,12 @@
 
     internal class ConsoleNotifier : IScoreNotifier, INotifier
     {
-        private int WindowWidth { get; set; } = Console.WindowWidth;
+        public ConsoleNotifier()
+        {
+            this.WindowWidth = Console.WindowWidth;
+        }
+
+        private int WindowWidth { get; set; }
         
         public void DisplayScores(List<Score> scores)
         {

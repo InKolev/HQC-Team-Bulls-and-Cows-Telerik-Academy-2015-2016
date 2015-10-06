@@ -14,11 +14,14 @@ namespace BullsAndCows.Core
         {
             this.Notifier = notifier;
             this.Scoreboard = scoreboard;
+            this.RandomGenerator = new Random();
+            this.FourDigitNumberPattern = new Regex("[1-9][0-9][0-9][0-9]");
+            this.GuessAttemptsMaxValue = 25;
         }
 
-        private Random RandomGenerator { get; set; } = new Random();
+        private Random RandomGenerator { get; set; } 
 
-        private Regex FourDigitNumberPattern { get; set; } = new Regex("[1-9][0-9][0-9][0-9]");
+        private Regex FourDigitNumberPattern { get; set; }
 
         private INotifier Notifier { get; set; }
 
@@ -32,7 +35,7 @@ namespace BullsAndCows.Core
 
         private int GuessAttempts { get; set; }
 
-        private int GuessAttemptsMaxValue { get; } = 25;
+        private int GuessAttemptsMaxValue { get; set; } 
 
         private bool ReadAction()
         {
@@ -69,7 +72,7 @@ namespace BullsAndCows.Core
                     }
                 default:
                     {
-                        if (this.FourDigitNumberPattern.IsMatch(input))
+                        if (this.FourDigitNumberPattern.IsMatch(input) && (input.Length == 4))
                         {
                             if (this.GuessAttempts <= this.GuessAttemptsMaxValue)
                             {
