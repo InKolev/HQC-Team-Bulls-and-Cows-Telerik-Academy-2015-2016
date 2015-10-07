@@ -17,6 +17,7 @@ namespace BullsAndCows.Core
             this.RandomGenerator = new Random();
             this.FourDigitNumberPattern = new Regex("[1-9][0-9][0-9][0-9]");
             this.GuessAttemptsMaxValue = 25;
+            this.randomNumberGenerator = new RandomNumberGenerator();
         }
 
         private Random RandomGenerator { get; set; }
@@ -36,6 +37,8 @@ namespace BullsAndCows.Core
         private int GuessAttempts { get; set; }
 
         private int GuessAttemptsMaxValue { get; set; }
+
+        private RandomNumberGenerator randomNumberGenerator { get; set; }
 
         private bool ReadAction()
         {
@@ -194,30 +197,13 @@ namespace BullsAndCows.Core
             }
         }
 
-        private string GenerateNumber(int digits)
-        {
-            var generatedNumber = new StringBuilder();
-
-            while (generatedNumber.Length < digits)
-            {
-                var digit = this.RandomGenerator.Next(0, 10).ToString();
-
-                if (!(generatedNumber.ToString().Contains(digit)))
-                {
-                    generatedNumber.Append(digit);
-                }
-            }
-
-            return generatedNumber.ToString();
-        }
-
         public void Initialize()
         {
             this.Notifier.Notify("IntroductionCall");
             this.Notifier.Notify("CommandsCall");
             this.Notifier.Notify("New game started. Wish you luck.");
 
-            this.NumberToGuess = GenerateNumber(4);
+            this.NumberToGuess = randomNumberGenerator.GenerateNumber(4);
             this.GuessAttempts = 1;
 
             this.CheatHelper = "XXXX";
