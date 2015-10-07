@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Engine.cs" />
+    <Compile Include="Helpers\ProcessGuessCommand.cs" />
     <Compile Include="Helpers\RandomNumberGenerator.cs" />
     <Compile Include="Helpers\ScoreSerializer.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
@@ -55,6 +56,7 @@
     <Compile Include="Helpers\ConsoleNotifier.cs" />
     <Compile Include="Helpers\Score.cs" />
     <Compile Include="Helpers\Scoreboard.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Interfaces\INotifier.cs" />

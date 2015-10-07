@@ -69,9 +69,16 @@ namespace BullsAndCows.Core
                         {
                             if (this.Data.GuessAttempts <= this.Data.GuessAttemptsMaxValue)
                             {
-                                bool isRunning = ProcessGuess(input);
-
-                                return !(isRunning);
+                                if (input.Equals(this.Data.NumberToGuess))
+                                {
+                                    ProcessWin();
+                                    return false;
+                                }
+                                else
+                                {
+                                    ProcessGuess(input);
+                                    return true;
+                                }
                             }
                             else
                             {
@@ -99,14 +106,8 @@ namespace BullsAndCows.Core
             return true;
         }
 
-        private bool ProcessGuess(string guess)
-        {
-            if (guess.Equals(this.Data.NumberToGuess))
-            {
-                ProcessWin();
-                return true;
-            }
-            else
+        private void ProcessGuess(string guess)
+        {           
             {
                 this.Data.Bulls = 0;
                 this.Data.Cows = 0;
@@ -136,7 +137,6 @@ namespace BullsAndCows.Core
                 }
             }
 
-            return false;
         }
 
         private bool NumberHasRepetitions(string guess)
