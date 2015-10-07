@@ -14,13 +14,10 @@ namespace BullsAndCows.Core
         {
             this.Notifier = notifier;
             this.Scoreboard = scoreboard;
-            this.RandomGenerator = new Random();
             this.FourDigitNumberPattern = new Regex("[1-9][0-9][0-9][0-9]");
             this.GuessAttemptsMaxValue = 25;
             this.randomNumberGenerator = new RandomNumberGenerator();
         }
-
-        private Random RandomGenerator { get; set; }
 
         private Regex FourDigitNumberPattern { get; set; }
 
@@ -175,7 +172,7 @@ namespace BullsAndCows.Core
 
                 do
                 {
-                    i = this.RandomGenerator.Next(0, 4);
+                    i = this.randomNumberGenerator.Next(0, 4);
                 }
                 while (this.CheatHelper[i] != 'X');
 
@@ -204,6 +201,7 @@ namespace BullsAndCows.Core
             this.Notifier.Notify("New game started. Wish you luck.");
 
             this.NumberToGuess = randomNumberGenerator.GenerateNumber(4);
+            Console.WriteLine(this.NumberToGuess);
             this.GuessAttempts = 1;
 
             this.CheatHelper = "XXXX";

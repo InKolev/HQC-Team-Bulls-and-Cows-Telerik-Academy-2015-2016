@@ -8,11 +8,15 @@
     {
         private Random RandomGenerator { get; set; }
 
+        public RandomNumberGenerator()
+        {
+            this.RandomGenerator = new Random();
+        }
+
         public string GenerateNumber(int digits)
         {
             var generatedNumber = new StringBuilder();
-            this.RandomGenerator = new Random();
-
+            
             while (generatedNumber.Length < digits)
             {
                 var digit = this.RandomGenerator.Next(0, 10).ToString();
@@ -24,6 +28,11 @@
             }
 
             return generatedNumber.ToString();
+        }
+
+        public int Next(int minValue, int maxValue)
+        {
+            return this.RandomGenerator.Next(minValue, maxValue);
         }
     }
 }
