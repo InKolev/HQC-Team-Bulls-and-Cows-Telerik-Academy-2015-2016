@@ -1,6 +1,8 @@
 ﻿namespace BullsAndCows.Core
 {
-    internal class Data
+    using BullsAndCows.Interfaces;
+
+    internal class Data : IDataState
     {
         public string CheatHelper { get; set; }
 
@@ -15,7 +17,5 @@
         public int Bulls { get; set; }
 
         public int Cows { get; set; }
-
-
     }
 }

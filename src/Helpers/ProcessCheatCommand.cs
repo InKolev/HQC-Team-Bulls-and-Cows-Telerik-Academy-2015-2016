@@ -7,18 +7,18 @@
 
     class ProcessCheatCommand : ICommand
     {
-        public ProcessCheatCommand(Data data, INotifier notifier, INumberGenerator numberGenerator)
+        public ProcessCheatCommand(IDataState data, INotifier notifier, INumberGenerator numberGenerator)
         {
             this.Data = data;
             this.Notifier = notifier;
             this.NumberGenerator = numberGenerator;
         }
 
-        private Data Data { get; set; }
+        private IDataState Data { get; set; }
 
-         private INotifier Notifier { get; set; }
+        private INotifier Notifier { get; set; }
 
-         private INumberGenerator NumberGenerator { get; set; }
+        private INumberGenerator NumberGenerator { get; set; }
 
         public void Execute()
         {

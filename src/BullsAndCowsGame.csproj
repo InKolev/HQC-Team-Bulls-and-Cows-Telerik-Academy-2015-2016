@@ -59,6 +59,7 @@
     <Compile Include="Helpers\Scoreboard.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Interfaces\IDataState.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Interfaces\INotifier.cs" />
     <Compile Include="Interfaces\IScoreboard.cs" />

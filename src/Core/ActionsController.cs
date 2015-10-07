@@ -7,7 +7,7 @@ namespace BullsAndCows.Core
 {
     internal class ActionsController : IController
     {
-        public ActionsController(Data data, INotifier notifier, IScoreboard scoreboard, INumberGenerator numberGenerator)
+        public ActionsController(IDataState data, INotifier notifier, IScoreboard scoreboard, INumberGenerator numberGenerator)
         {
             this.Data = data;
             this.Notifier = notifier;
@@ -24,8 +24,7 @@ namespace BullsAndCows.Core
 
         private INumberGenerator NumberGenerator { get; set; }
 
-        private Data Data { get; set; }
-
+        private IDataState Data { get; set; }
 
         private bool ReadAction()
         {
