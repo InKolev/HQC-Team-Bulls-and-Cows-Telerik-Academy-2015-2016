@@ -95,14 +95,6 @@ namespace BullsAndCows.Core
 
             return true;
         }
-
-        private bool FourDigitNumberHasRepeatingDigits(string number)
-        {
-            foreach (var digit in number)
-            {
-            }
-            return true;
-        }
        
         private void ProcessWin()
         {

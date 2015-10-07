@@ -7,16 +7,16 @@
 
     class ProcessGuessCommand : ICommand
     {
-        public ProcessGuessCommand(Data data, INotifier notifier, string guess)
+        public ProcessGuessCommand(IDataState data, INotifier notifier, string guess)
         {
             this.Data = data;
             this.Notifier = notifier;
             this.Guess = guess;
         }
 
-        private Data Data { get; set; }
+        private IDataState Data { get; set; }
 
-         private INotifier Notifier { get; set; }
+        private INotifier Notifier { get; set; }
 
         private string Guess { get; set; }
 
