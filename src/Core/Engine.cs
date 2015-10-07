@@ -13,7 +13,9 @@ namespace BullsAndCows.Core
         {
             var notifier = new ConsoleNotifier();
             IScoreboard scoreboard = new Scoreboard(notifier, new ScoreSerializer());
-            IController actionsController = new ActionsController(notifier, scoreboard);
+            INumberGenerator numberGenerator = new RandomNumberGenerator();
+            IController actionsController = new ActionsController(notifier, scoreboard, numberGenerator);
+
 
             var bullsAndCows = new Game(actionsController);
             bullsAndCows.Start();
