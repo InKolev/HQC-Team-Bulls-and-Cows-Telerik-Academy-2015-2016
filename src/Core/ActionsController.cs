@@ -76,7 +76,8 @@ namespace BullsAndCows.Core
                                 }
                                 else
                                 {
-                                    ProcessGuess(input);
+                                    var processGuess = new ProcessGuessCommand(this.Data, this.Notifier, input);
+                                    processGuess.Execute();
                                     return true;
                                 }
                             }
@@ -104,56 +105,6 @@ namespace BullsAndCows.Core
             {
             }
             return true;
-        }
-
-        private void ProcessGuess(string guess)
-        {           
-            {
-                this.Data.Bulls = 0;
-                this.Data.Cows = 0;
-
-                for (int i = 0; i < this.Data.NumberToGuess.Length; i++)
-                {
-                    if (this.Data.NumberToGuess[i].Equals(guess[i]))
-                    {
-                        this.Data.Bulls++;
-                    }
-                    else if (this.Data.NumberToGuess.Contains(guess[i]))
-                    {
-                        this.Data.Cows++;
-                    }
-                }
-
-                var hasRepetitions = NumberHasRepetitions(guess);
-            
-                if (hasRepetitions)
-                {
-                    this.Notifier.Notify("Incorrect number. The guess cannot contain repeatable digits.");
-                }
-                else
-                {
-                    this.Data.GuessAttempts++;
-                    this.Notifier.Notify(String.Format("Wrong number! Bulls: {0}, Cows: {1}", this.Data.Bulls, this.Data.Cows));
-                }
-            }
-
-        }
-
-        private bool NumberHasRepetitions(string guess)
-        {
-            int[] repeatedDigits = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
-            for (int i = 0; i < this.Data.NumberToGuess.Length; i++)
-            {
-                var position = int.Parse(guess[i].ToString());
-
-                if (guess.Contains(guess[i]))
-                {
-                    repeatedDigits[position]++;
-                }
-            }
-
-            return repeatedDigits.Any(x => x > 1);
         }
 
         private void ProcessCheat()
@@ -195,7 +146,7 @@ namespace BullsAndCows.Core
             this.Notifier.Notify("New game started. Wish you luck.");
             this.Data.GuessAttemptsMaxValue = 25;
             this.Data.NumberToGuess = this.NumberGenerator.GenerateNumber(4);
-            //Console.WriteLine(this.Data.NumberToGuess);
+            Console.WriteLine(this.Data.NumberToGuess);
             this.Data.GuessAttempts = 1;
 
             this.Data.CheatHelper = "XXXX";
