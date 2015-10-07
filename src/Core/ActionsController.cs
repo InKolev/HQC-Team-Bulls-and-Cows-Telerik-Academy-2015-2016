@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using BullsAndCows.Helpers;
 using System.Text.RegularExpressions;
 using BullsAndCows.Interfaces;
@@ -45,7 +42,8 @@ namespace BullsAndCows.Core
                     }
                 case "help":
                     {
-                        ProcessCheat();
+                        var processCheat = new ProcessCheatCommand(this.Data, this.Notifier, this.NumberGenerator);
+                        processCheat.Execute();
                         break;
                     }
                 case "top":
@@ -106,29 +104,7 @@ namespace BullsAndCows.Core
             }
             return true;
         }
-
-        private void ProcessCheat()
-        {
-            this.Data.HasCheated = true;
-
-            if (this.Data.CheatHelper.Contains('X'))
-            {
-                int i;
-
-                do
-                {
-                    i = this.NumberGenerator.Next(0, 4);
-                }
-                while (this.Data.CheatHelper[i] != 'X');
-
-                char[] cheatHelperChars = this.Data.CheatHelper.ToCharArray();
-                cheatHelperChars[i] = this.Data.NumberToGuess.ToString()[i];
-                this.Data.CheatHelper = new string(cheatHelperChars);
-            }
-
-            this.Notifier.Notify(String.Format("The number looks like {0}.", this.Data.CheatHelper));
-        }
-
+       
         private void ProcessWin()
         {
             this.Notifier.Notify("Congratulations! You have guessed the secret number.");
@@ -146,7 +122,7 @@ namespace BullsAndCows.Core
             this.Notifier.Notify("New game started. Wish you luck.");
             this.Data.GuessAttemptsMaxValue = 25;
             this.Data.NumberToGuess = this.NumberGenerator.GenerateNumber(4);
-            Console.WriteLine(this.Data.NumberToGuess);
+            //Console.WriteLine(this.Data.NumberToGuess);
             this.Data.GuessAttempts = 1;
 
             this.Data.CheatHelper = "XXXX";

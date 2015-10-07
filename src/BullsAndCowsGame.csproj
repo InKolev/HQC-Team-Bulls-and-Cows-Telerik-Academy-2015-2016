@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Engine.cs" />
+    <Compile Include="Helpers\ProcessCheatCommand.cs" />
     <Compile Include="Helpers\ProcessGuessCommand.cs" />
     <Compile Include="Helpers\RandomNumberGenerator.cs" />
     <Compile Include="Helpers\ScoreSerializer.cs">
