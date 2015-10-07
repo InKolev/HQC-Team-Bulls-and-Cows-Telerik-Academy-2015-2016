@@ -10,14 +10,13 @@ namespace BullsAndCows.Core
 {
     internal class ActionsController : IController
     {
-        public ActionsController(INotifier notifier, IScoreboard scoreboard, INumberGenerator numberGenerator)
+        public ActionsController(Data data, INotifier notifier, IScoreboard scoreboard, INumberGenerator numberGenerator)
         {
+            this.Data = data;
             this.Notifier = notifier;
             this.Scoreboard = scoreboard;
             this.NumberGenerator = numberGenerator;
-            this.FourDigitNumberPattern = new Regex("[1-9][0-9][0-9][0-9]");
-            this.GuessAttemptsMaxValue = 25;
-
+            this.FourDigitNumberPattern = new Regex("[0-9][0-9][0-9][0-9]");
         }
 
         private Regex FourDigitNumberPattern { get; set; }
@@ -28,15 +27,7 @@ namespace BullsAndCows.Core
 
         private INumberGenerator NumberGenerator { get; set; }
 
-        private string CheatHelper { get; set; }
-
-        private string NumberToGuess { get; set; }
-
-        private bool HasCheated { get; set; }
-
-        private int GuessAttempts { get; set; }
-
-        private int GuessAttemptsMaxValue { get; set; }
+        private Data Data { get; set; }
 
 
         private bool ReadAction()
@@ -76,7 +67,7 @@ namespace BullsAndCows.Core
                     {
                         if (this.FourDigitNumberPattern.IsMatch(input) && (input.Length == 4))
                         {
-                            if (this.GuessAttempts <= this.GuessAttemptsMaxValue)
+                            if (this.Data.GuessAttempts <= this.Data.GuessAttemptsMaxValue)
                             {
                                 bool isRunning = ProcessGuess(input);
 
@@ -110,24 +101,25 @@ namespace BullsAndCows.Core
 
         private bool ProcessGuess(string guess)
         {
-            if (guess.Equals(this.NumberToGuess))
+            if (guess.Equals(this.Data.NumberToGuess))
             {
                 ProcessWin();
                 return true;
             }
             else
             {
-                int bulls = 0, cows = 0;
+                this.Data.Bulls = 0;
+                this.Data.Cows = 0;
 
-                for (int i = 0; i < this.NumberToGuess.Length; i++)
+                for (int i = 0; i < this.Data.NumberToGuess.Length; i++)
                 {
-                    if (this.NumberToGuess[i].Equals(guess[i]))
+                    if (this.Data.NumberToGuess[i].Equals(guess[i]))
                     {
-                        bulls++;
+                        this.Data.Bulls++;
                     }
-                    else if (this.NumberToGuess.Contains(guess[i]))
+                    else if (this.Data.NumberToGuess.Contains(guess[i]))
                     {
-                        cows++;
+                        this.Data.Cows++;
                     }
                 }
 
@@ -139,8 +131,8 @@ namespace BullsAndCows.Core
                 }
                 else
                 {
-                    this.GuessAttempts++;
-                    this.Notifier.Notify(String.Format("Wrong number! Bulls: {0}, Cows: {1}", bulls, cows));
+                    this.Data.GuessAttempts++;
+                    this.Notifier.Notify(String.Format("Wrong number! Bulls: {0}, Cows: {1}", this.Data.Bulls, this.Data.Cows));
                 }
             }
 
@@ -151,7 +143,7 @@ namespace BullsAndCows.Core
         {
             int[] repeatedDigits = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-            for (int i = 0; i < this.NumberToGuess.Length; i++)
+            for (int i = 0; i < this.Data.NumberToGuess.Length; i++)
             {
                 var position = int.Parse(guess[i].ToString());
 
@@ -166,9 +158,9 @@ namespace BullsAndCows.Core
 
         private void ProcessCheat()
         {
-            this.HasCheated = true;
+            this.Data.HasCheated = true;
 
-            if (this.CheatHelper.Contains('X'))
+            if (this.Data.CheatHelper.Contains('X'))
             {
                 int i;
 
@@ -176,23 +168,23 @@ namespace BullsAndCows.Core
                 {
                     i = this.NumberGenerator.Next(0, 4);
                 }
-                while (this.CheatHelper[i] != 'X');
+                while (this.Data.CheatHelper[i] != 'X');
 
-                char[] cheatHelperChars = this.CheatHelper.ToCharArray();
-                cheatHelperChars[i] = this.NumberToGuess.ToString()[i];
-                this.CheatHelper = new string(cheatHelperChars);
+                char[] cheatHelperChars = this.Data.CheatHelper.ToCharArray();
+                cheatHelperChars[i] = this.Data.NumberToGuess.ToString()[i];
+                this.Data.CheatHelper = new string(cheatHelperChars);
             }
 
-            this.Notifier.Notify(String.Format("The number looks like {0}.", this.CheatHelper));
+            this.Notifier.Notify(String.Format("The number looks like {0}.", this.Data.CheatHelper));
         }
 
         private void ProcessWin()
         {
             this.Notifier.Notify("Congratulations! You have guessed the secret number.");
 
-            if (!this.HasCheated)
+            if (!this.Data.HasCheated)
             {
-                this.Scoreboard.AddToScoreboard(this.GuessAttempts);
+                this.Scoreboard.AddToScoreboard(this.Data.GuessAttempts);
             }
         }
 
@@ -201,13 +193,13 @@ namespace BullsAndCows.Core
             this.Notifier.Notify("IntroductionCall");
             this.Notifier.Notify("CommandsCall");
             this.Notifier.Notify("New game started. Wish you luck.");
+            this.Data.GuessAttemptsMaxValue = 25;
+            this.Data.NumberToGuess = this.NumberGenerator.GenerateNumber(4);
+            //Console.WriteLine(this.Data.NumberToGuess);
+            this.Data.GuessAttempts = 1;
 
-            this.NumberToGuess = this.NumberGenerator.GenerateNumber(4);
-            Console.WriteLine(this.NumberToGuess);
-            this.GuessAttempts = 1;
-
-            this.CheatHelper = "XXXX";
-            this.HasCheated = false;
+            this.Data.CheatHelper = "XXXX";
+            this.Data.HasCheated = false;
         }
 
         public void Run()

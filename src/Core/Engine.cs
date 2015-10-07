@@ -11,11 +11,11 @@ namespace BullsAndCows.Core
     {
         public static void Main()
         {
+            var data = new Data();
             var notifier = new ConsoleNotifier();
             IScoreboard scoreboard = new Scoreboard(notifier, new ScoreSerializer());
             INumberGenerator numberGenerator = new RandomNumberGenerator();
-            IController actionsController = new ActionsController(notifier, scoreboard, numberGenerator);
-
+            IController actionsController = new ActionsController(data, notifier, scoreboard, numberGenerator);
 
             var bullsAndCows = new Game(actionsController);
             bullsAndCows.Start();
