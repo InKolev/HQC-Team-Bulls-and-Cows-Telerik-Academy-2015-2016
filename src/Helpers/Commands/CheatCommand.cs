@@ -5,9 +5,9 @@
     using BullsAndCows.Interfaces;
     using BullsAndCows.Core;
 
-    class ProcessCheatCommand : ICommand
+    class CheatCommand : ICommand
     {
-        public ProcessCheatCommand(IDataState data, INotifier notifier, INumberGenerator numberGenerator)
+        public CheatCommand(IDataState data, INotifier notifier, INumberGenerator numberGenerator)
         {
             this.Data = data;
             this.Notifier = notifier;
@@ -20,7 +20,7 @@
 
         private INumberGenerator NumberGenerator { get; set; }
 
-        public void Execute()
+        public bool Execute()
         {
             this.Data.HasCheated = true;
 
@@ -40,6 +40,8 @@
             }
 
             this.Notifier.Notify(String.Format("The number looks like {0}.", this.Data.CheatHelper));
+
+            return true;
         }
     }
 }

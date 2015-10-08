@@ -1,7 +1,7 @@
 ﻿namespace BullsAndCows.Interfaces
 {
-    interface ICommand
+    public interface ICommand
     {
-        void Execute();
+        bool Execute();
     }
 }

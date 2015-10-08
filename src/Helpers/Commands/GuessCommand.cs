@@ -5,9 +5,9 @@
     using BullsAndCows.Interfaces;
     using BullsAndCows.Core;
 
-    class ProcessGuessCommand : ICommand
+    class GuessCommand : ICommand
     {
-        public ProcessGuessCommand(IDataState data, INotifier notifier, string guess)
+        public GuessCommand(IDataState data, INotifier notifier, string guess)
         {
             this.Data = data;
             this.Notifier = notifier;
@@ -20,7 +20,7 @@
 
         private string Guess { get; set; }
 
-        public void Execute()
+        public bool Execute()
         {
             this.Data.Bulls = 0;
             this.Data.Cows = 0;
@@ -48,6 +48,8 @@
                 this.Data.GuessAttempts++;
                 this.Notifier.Notify(String.Format("Wrong number! Bulls: {0}, Cows: {1}", this.Data.Bulls, this.Data.Cows));
             }
+
+            return true;
         }
 
         private bool NumberHasRepetitions(string guess)

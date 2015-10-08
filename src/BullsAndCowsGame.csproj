@@ -48,8 +48,15 @@
     </Compile>
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Engine.cs" />
-    <Compile Include="Helpers\ProcessCheatCommand.cs" />
-    <Compile Include="Helpers\ProcessGuessCommand.cs" />
+    <Compile Include="Helpers\CommandsFactory.cs" />
+    <Compile Include="Helpers\Commands\DisplayCommandsListCommand.cs" />
+    <Compile Include="Helpers\Commands\DisplayMessageCommand.cs" />
+    <Compile Include="Helpers\Commands\DisplayScoreboardCommand.cs" />
+    <Compile Include="Helpers\Commands\CheatCommand.cs" />
+    <Compile Include="Helpers\Commands\GuessCommand.cs" />
+    <Compile Include="Helpers\Commands\InitializeGameCommand.cs" />
+    <Compile Include="Helpers\Commands\QuitGameCommand.cs" />
+    <Compile Include="Helpers\Commands\WinGameCommand.cs" />
     <Compile Include="Helpers\RandomNumberGenerator.cs" />
     <Compile Include="Helpers\ScoreSerializer.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
@@ -65,6 +72,7 @@
     <Compile Include="Interfaces\IScoreboard.cs" />
     <Compile Include="Interfaces\IScoreNotifier.cs" />
     <Compile Include="Interfaces\IScoreSerializer.cs" />
+    <Compile Include="Interfaces\ICommandsFactory.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
