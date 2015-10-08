@@ -1,4 +1,5 @@
-﻿namespace BullsAndCows.Helpers
+﻿
+namespace BullsAndCows.Helpers.Commands
 {
     using System;
     using System.Linq;

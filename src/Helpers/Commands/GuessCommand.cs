@@ -1,9 +1,8 @@
-﻿namespace BullsAndCows.Helpers
+﻿namespace BullsAndCows.Helpers.Commands
 {
     using System;
     using System.Linq;
-    using BullsAndCows.Interfaces;
-    using BullsAndCows.Core;
+    using Interfaces;
 
     class GuessCommand : ICommand
     {

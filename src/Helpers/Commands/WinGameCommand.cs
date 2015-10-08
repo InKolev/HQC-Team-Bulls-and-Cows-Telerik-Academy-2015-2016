@@ -1,11 +1,7 @@
-﻿using BullsAndCows.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BullsAndCows.Helpers
+﻿namespace BullsAndCows.Helpers.Commands
 {
+    using BullsAndCows.Interfaces;
+
     internal class WinGameCommand : ICommand
     {
         public WinGameCommand(INotifier notifier, IScoreboard scoreboard, IDataState data)

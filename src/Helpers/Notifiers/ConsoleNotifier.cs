@@ -62,10 +62,9 @@
 
         private void DisplayIntroductionMessage()
         {
-            string welcomeMessage = "Welcome to “Bulls and Cows” game. Try to guess my secret 4-digit number. The digits inside the secret number cannot be repeated. Have fun!";
+            string welcomeMessage = "   Welcome to “Bulls and Cows” game. Try to guess my secret 4-digit number. The digits inside the secret number cannot be repeated. Have fun!";
 
             Console.WriteLine(new String('*', this.WindowWidth - 1));
-            //Console.WriteLine(String.Format("{0} {1} {0}", new String('*', this.WindowWidth / 2 - welcomeMessage.Length / 2 - 2), welcomeMessage));
             Console.WriteLine(welcomeMessage);
             Console.WriteLine(new String('*', this.WindowWidth - 1));
         }
@@ -74,7 +73,8 @@
         {
             Console.WriteLine("\"commands\" - to display the commands list.");
             Console.WriteLine("\"start\"    - to start a new game.");
-            Console.WriteLine("\"exit\"     - to quit the game and close the application.");
+            Console.WriteLine("\"quit\"     - to quit the current game.");
+            Console.WriteLine("\"exit\"     - to exit the application.");
             Console.WriteLine("\"help\"     - to unveil a random secret digit (if you want to be a cheater).");
             Console.WriteLine("\"top\"      - to view the top scoreboard.");
         }

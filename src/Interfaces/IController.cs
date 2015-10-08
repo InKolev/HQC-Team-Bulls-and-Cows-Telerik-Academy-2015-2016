@@ -2,7 +2,6 @@
 {
     interface IController
     {
-        void Initialize();
         void Run();
     }
 }

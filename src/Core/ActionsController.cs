@@ -1,10 +1,10 @@
-﻿using System;
-using BullsAndCows.Helpers;
-using System.Text.RegularExpressions;
-using BullsAndCows.Interfaces;
-
+﻿
 namespace BullsAndCows.Core
 {
+    using System;
+    using Interfaces;
+    using BullsAndCows.Helpers.Commands;
+
     internal class ActionsController : IController
     {
         public ActionsController(IDataState data, INotifier notifier, IScoreboard scoreboard, INumberGenerator numberGenerator, ICommandsFactory commandsFactory)
@@ -15,7 +15,6 @@ namespace BullsAndCows.Core
             this.CommandsFactory = commandsFactory;
             this.NumberGenerator = numberGenerator;
         }
-
 
         public INotifier Notifier { get; set; }
 
@@ -32,7 +31,6 @@ namespace BullsAndCows.Core
             this.Notifier.Notify("Enter your Guess/Command: ");
 
             string input = Console.ReadLine().Trim();
-
             var command = this.CommandsFactory.GetCommand(input);
 
             bool isRunning = command.Execute();
@@ -40,24 +38,10 @@ namespace BullsAndCows.Core
             return isRunning;
         }
 
-        public void Initialize()
-        {
-            this.Notifier.Notify("IntroductionCall");
-            this.Notifier.Notify("CommandsCall");
-            this.Notifier.Notify("New game started. Wish you luck.");
-
-            this.Data.GuessAttemptsMaxValue = 25;
-            this.Data.NumberToGuess = this.NumberGenerator.GenerateNumber(4);
-            //Console.WriteLine(this.Data.NumberToGuess);
-            this.Data.GuessAttempts = 1;
-
-            this.Data.CheatHelper = "XXXX";
-            this.Data.HasCheated = false;
-        }
-
         public void Run()
         {
-            Initialize();
+            var command = new InitializeGameCommand(this.Data, this.Notifier, this.NumberGenerator);
+            command.Execute();
 
             bool isRunning = true;
 
@@ -68,20 +52,19 @@ namespace BullsAndCows.Core
                     isRunning = ReadAction();
                 }
 
-                this.Notifier.Notify("Would you like to play again? Type \"yes\" or \"no\" ");
+                this.Notifier.Notify("Would you like to play again? \"y\" or \"n\" ");
 
                 var answer = Console.ReadLine();
 
-                if (answer.Equals("yes") || answer.Equals("YES"))
+                if (answer.Equals("y") || answer.Equals("Y"))
                 {
                     Run();
                 }
-                else if (answer.Equals("no") || answer.Equals("NO"))
+                else if (answer.Equals("n") || answer.Equals("N"))
                 {
                     break;
                 }
             }
         }
-
     }
 }

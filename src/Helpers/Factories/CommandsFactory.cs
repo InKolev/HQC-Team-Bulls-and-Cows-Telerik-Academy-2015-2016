@@ -1,13 +1,11 @@
-﻿using BullsAndCows.Helpers.Commands;
-using BullsAndCows.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿
 
 namespace BullsAndCows.Helpers
 {
+    using Commands;
+    using Interfaces;
+    using System.Text.RegularExpressions;
+
     internal class CommandsFactory : ICommandsFactory
     {
         public CommandsFactory(IDataState data, INotifier notifier, INumberGenerator numberGenerator, IScoreboard scoreboard)
@@ -19,6 +17,8 @@ namespace BullsAndCows.Helpers
             this.FourDigitNumberPattern = new Regex("[0-9][0-9][0-9][0-9]");
         }
 
+        public Regex FourDigitNumberPattern { get; private set; }
+
         public IDataState Data { get; private set; }
 
         public INotifier Notifier { get; private set; }
@@ -26,8 +26,6 @@ namespace BullsAndCows.Helpers
         public INumberGenerator NumberGenerator { get; private set; }
 
         public IScoreboard Scoreboard { get; private set; }
-
-        private Regex FourDigitNumberPattern { get; set; }
 
         public ICommand GetCommand(string command)
         {
@@ -55,9 +53,14 @@ namespace BullsAndCows.Helpers
                         commandExecutor = new DisplayScoreboardCommand(this.Scoreboard);
                         break;
                     }
-                case "exit":
+                case "quit":
                     {
                         commandExecutor = new QuitGameCommand(this.Notifier);
+                        break;
+                    }
+                case "exit":
+                    {
+                        commandExecutor = new ExitGameCommand(this.Notifier);
                         break;
                     }
                 default:

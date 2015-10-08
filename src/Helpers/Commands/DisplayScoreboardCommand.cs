@@ -1,8 +1,8 @@
-﻿using System;
-using BullsAndCows.Interfaces;
-
-namespace BullsAndCows.Helpers
+﻿
+namespace BullsAndCows.Helpers.Commands
 {
+    using BullsAndCows.Interfaces;
+
     internal class DisplayScoreboardCommand : ICommand
     {
         public DisplayScoreboardCommand(IScoreboard scoreboard)

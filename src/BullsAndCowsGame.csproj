@@ -48,7 +48,8 @@
     </Compile>
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Engine.cs" />
-    <Compile Include="Helpers\CommandsFactory.cs" />
+    <Compile Include="Helpers\Commands\ExitGameCommand.cs" />
+    <Compile Include="Helpers\Factories\CommandsFactory.cs" />
     <Compile Include="Helpers\Commands\DisplayCommandsListCommand.cs" />
     <Compile Include="Helpers\Commands\DisplayMessageCommand.cs" />
     <Compile Include="Helpers\Commands\DisplayScoreboardCommand.cs" />
@@ -57,13 +58,13 @@
     <Compile Include="Helpers\Commands\InitializeGameCommand.cs" />
     <Compile Include="Helpers\Commands\QuitGameCommand.cs" />
     <Compile Include="Helpers\Commands\WinGameCommand.cs" />
-    <Compile Include="Helpers\RandomNumberGenerator.cs" />
-    <Compile Include="Helpers\ScoreSerializer.cs">
+    <Compile Include="Helpers\Misc\RandomNumberGenerator.cs" />
+    <Compile Include="Helpers\Scores\ScoreSerializer.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="Helpers\ConsoleNotifier.cs" />
-    <Compile Include="Helpers\Score.cs" />
-    <Compile Include="Helpers\Scoreboard.cs" />
+    <Compile Include="Helpers\Notifiers\ConsoleNotifier.cs" />
+    <Compile Include="Helpers\Scores\Score.cs" />
+    <Compile Include="Helpers\Scores\Scoreboard.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\IDataState.cs" />

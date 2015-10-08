@@ -1,11 +1,8 @@
-﻿using BullsAndCows.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace BullsAndCows.Helpers.Commands
 {
+    using Interfaces;
+
     internal class QuitGameCommand : ICommand
     {
         public QuitGameCommand(INotifier notifier)

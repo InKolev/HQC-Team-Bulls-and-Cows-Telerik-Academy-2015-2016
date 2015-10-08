@@ -1,12 +1,10 @@
-﻿using BullsAndCows.Helpers;
-using BullsAndCows.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace BullsAndCows.Core
 {
+    using Helpers;
+    using Helpers.Misc;
+    using Interfaces;
+
     internal class Engine
     {
         public static void Main()

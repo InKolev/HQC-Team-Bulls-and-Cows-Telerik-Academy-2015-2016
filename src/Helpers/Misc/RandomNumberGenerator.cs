@@ -1,4 +1,4 @@
-﻿namespace BullsAndCows.Helpers
+﻿namespace BullsAndCows.Helpers.Misc
 {
     using Interfaces;
     using System;
