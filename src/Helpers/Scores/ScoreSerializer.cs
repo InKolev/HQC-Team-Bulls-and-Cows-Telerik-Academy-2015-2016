@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.IO;
     using Interfaces;
+    using System;
+    using System.Globalization;
 
     internal class ScoreSerializer : IScoreSerializer
     {
@@ -10,9 +12,7 @@
         private static ScoreSerializer instance;
         private static object syncLock = new object();
 
-        protected ScoreSerializer()
-        {
-        }
+        protected ScoreSerializer() { }
 
         public static ScoreSerializer GetSerializer()
         {
@@ -46,7 +46,7 @@
                     string playerName = currentLine.Substring(0, firstSeparator - 1);
                     string playerGuesses = currentLine.Substring(firstSeparator + 2, secondSeparator - firstSeparator - 3);
                     int guesses = int.Parse(playerGuesses);
-                    double time = double.Parse(currentLine.Substring(secondSeparator + 2, currentLine.Length - secondSeparator - 2));
+                    double time = double.Parse(currentLine.Substring(secondSeparator + 2, currentLine.Length - secondSeparator - 2), CultureInfo.InvariantCulture);
 
                     scores.Add(new Score(guesses, playerName, time));
                     currentLine = reader.ReadLine();

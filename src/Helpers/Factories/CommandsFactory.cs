@@ -4,6 +4,7 @@ namespace BullsAndCows.Helpers
 {
     using Commands;
     using Interfaces;
+    using System.Collections.Generic;
     using System.Text.RegularExpressions;
 
     internal class CommandsFactory : ICommandsFactory
@@ -14,8 +15,11 @@ namespace BullsAndCows.Helpers
             this.Notifier = notifier;
             this.Scoreboard = scoreboard;
             this.NumberGenerator = numberGenerator;
+            this.CommandsList = new Dictionary<string, ICommand>();
             this.FourDigitNumberPattern = new Regex("[0-9][0-9][0-9][0-9]");
         }
+
+        public Dictionary<string, ICommand> CommandsList { get; private set; }
 
         public Regex FourDigitNumberPattern { get; private set; }
 
@@ -29,48 +33,57 @@ namespace BullsAndCows.Helpers
 
         public ICommand GetCommand(string command)
         {
-            ICommand commandExecutor = null;
-
-            switch (command)
+            if (!this.CommandsList.ContainsKey(command))
             {
-                case "help":
-                    {
-                        commandExecutor = new CheatCommand(this.Data, this.Notifier, this.NumberGenerator);
-                        break;
-                    }
-                case "start":
-                    {
-                        commandExecutor = new InitializeGameCommand(this.Data, this.Notifier, this.NumberGenerator);
-                        break;
-                    }
-                case "commands":
-                    {
-                        commandExecutor = new DisplayCommandsListCommand(this.Notifier);
-                        break;
-                    }
-                case "top":
-                    {
-                        commandExecutor = new DisplayScoreboardCommand(this.Scoreboard);
-                        break;
-                    }
-                case "quit":
-                    {
-                        commandExecutor = new QuitGameCommand(this.Notifier);
-                        break;
-                    }
-                case "exit":
-                    {
-                        commandExecutor = new ExitGameCommand(this.Notifier);
-                        break;
-                    }
-                default:
-                    {
-                        commandExecutor = ProcessGuessAndReturnAppropriateCommand(command);
-                        break;
-                    }
-            }
+                ICommand commandExecutor = null;
 
-            return commandExecutor;
+                switch (command)
+                {
+                    case "help":
+                        {
+                            commandExecutor = new CheatCommand(this.Data, this.Notifier, this.NumberGenerator);
+                            break;
+                        }
+                    case "start":
+                        {
+                            commandExecutor = new InitializeGameCommand(this.Data, this.Notifier, this.NumberGenerator);
+                            break;
+                        }
+                    case "commands":
+                        {
+                            commandExecutor = new DisplayCommandsListCommand(this.Notifier);
+                            break;
+                        }
+                    case "top":
+                        {
+                            commandExecutor = new DisplayScoreboardCommand(this.Scoreboard);
+                            break;
+                        }
+                    case "quit":
+                        {
+                            commandExecutor = new QuitGameCommand(this.Notifier);
+                            break;
+                        }
+                    case "exit":
+                        {
+                            commandExecutor = new ExitGameCommand(this.Notifier);
+                            break;
+                        }
+                    default:
+                        {
+                            commandExecutor = ProcessGuessAndReturnAppropriateCommand(command);
+                            break;
+                        }
+                }
+
+                this.CommandsList.Add(command, commandExecutor);
+
+                return commandExecutor;
+            }
+            else
+            {
+                return this.CommandsList[command];
+            }
         }
 
         private ICommand ProcessGuessAndReturnAppropriateCommand(string command)

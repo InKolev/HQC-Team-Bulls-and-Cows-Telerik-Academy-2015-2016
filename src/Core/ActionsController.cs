@@ -40,8 +40,9 @@ namespace BullsAndCows.Core
 
         public void Run()
         {
-            var command = new InitializeGameCommand(this.Data, this.Notifier, this.NumberGenerator);
-            command.Execute();
+            this.CommandsFactory
+                .GetCommand("start")
+                .Execute();
 
             bool isRunning = true;
 
