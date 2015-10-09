@@ -13,9 +13,9 @@
         {
         }
 
-        public List<Score> Load()
+        public IList<Score> Load()
         {
-            List<Score> result = new List<Score>();
+            List<Score> scores = new List<Score>();
             StreamReader reader = new StreamReader(FilePath);
 
             using (reader)
@@ -29,15 +29,15 @@
                     string playerGuesses = currentLine.Substring(separatorIndex + 2, currentLine.Length - separatorIndex - 2);
                     int guesses = int.Parse(playerGuesses);
 
-                    result.Add(new Score(guesses, playerName));
+                    scores.Add(new Score(guesses, playerName));
                     currentLine = reader.ReadLine();
                 }
             }
 
-            return result;
+            return scores;
         }
 
-        public void Save(List<Score> scores)
+        public void Save(IList<Score> scores)
         {
             var writer = new StreamWriter(FilePath);
 

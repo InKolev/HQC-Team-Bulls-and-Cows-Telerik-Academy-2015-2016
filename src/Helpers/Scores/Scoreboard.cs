@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Interfaces;
 
     internal class Scoreboard : IScoreboard
@@ -15,7 +16,7 @@
             this.Scores = this.Serializer.Load();
         }
 
-        private List<Score> Scores { get; set; }
+        private IList<Score> Scores { get; set; }
 
         private IScoreNotifier Notifier { get; set; }
 
@@ -31,7 +32,7 @@
                 Score playerScore = new Score(guessAttempts, playerName);
 
                 this.Scores.Add(playerScore);
-                this.Scores.Sort();
+                this.Scores.OrderBy(x => x.NumberOfGuesses);
 
                 if (this.Scores.Count > TopPlayersDisplayCount)
                 {

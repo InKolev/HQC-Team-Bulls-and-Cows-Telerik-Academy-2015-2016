@@ -14,7 +14,7 @@
 
         private int WindowWidth { get; set; }
         
-        public void DisplayScores(List<Score> scores)
+        public void DisplayScores(IList<Score> scores)
         {
             int padLeftWidth = scores.Max(x => x.PlayerName.Length);
             int scoreBoardWidth = padLeftWidth + 17;

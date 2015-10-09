@@ -5,6 +5,6 @@
 
     interface IScoreNotifier : INotifier
     {
-        void DisplayScores(List<Score> scores);
+        void DisplayScores(IList<Score> scores);
     }
 }
