@@ -4,13 +4,30 @@
     using System.IO;
     using Interfaces;
 
-    //maybe make it singleton?
     internal class ScoreSerializer : IScoreSerializer
     {
         private const string FilePath = @"../../scores.txt";
+        private static ScoreSerializer instance;
+        private static object syncLock = new object();
 
-        public ScoreSerializer()
+        protected ScoreSerializer()
         {
+        }
+
+        public static ScoreSerializer GetSerializer()
+        {
+            if (instance == null)
+            {
+                lock (syncLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new ScoreSerializer();
+                    }
+                }
+            }
+
+            return instance;
         }
 
         public IList<Score> Load()

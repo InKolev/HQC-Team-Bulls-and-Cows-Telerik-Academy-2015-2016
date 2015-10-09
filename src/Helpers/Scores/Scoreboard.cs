@@ -44,7 +44,7 @@
         }
 
         public void DisplayTopScores()
-        {            
+        {
             if (this.Scores.Count > 0)
             {
                 this.Notifier.DisplayScores(this.Scores);

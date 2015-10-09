@@ -12,7 +12,7 @@ namespace BullsAndCows.Core
             IDataState data = new Data();
             IScoreNotifier notifier = new ConsoleNotifier();
             INumberGenerator numberGenerator = new RandomNumberGenerator();
-            IScoreboard scoreboard = new Scoreboard(notifier, new ScoreSerializer());
+            IScoreboard scoreboard = new Scoreboard(notifier, ScoreSerializer.GetSerializer());
             ICommandsFactory commandsFactory = new CommandsFactory(data, notifier, numberGenerator, scoreboard);
             IController actionsController = new ActionsController(data, notifier, scoreboard, numberGenerator, commandsFactory);
 
