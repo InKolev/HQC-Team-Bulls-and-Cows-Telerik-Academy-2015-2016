@@ -1,5 +1,6 @@
 ﻿namespace BullsAndCows.Core
 {
+    using System;
     using BullsAndCows.Interfaces;
 
     internal class Data : IDataState
@@ -17,5 +18,9 @@
         public int Bulls { get; set; }
 
         public int Cows { get; set; }
+
+        public DateTime StartTime { get; set; }
+        
+        public double PlayTime { get; set; }        
     }
 }

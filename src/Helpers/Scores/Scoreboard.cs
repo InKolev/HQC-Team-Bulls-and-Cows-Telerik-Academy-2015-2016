@@ -14,6 +14,10 @@
             this.Notifier = notifier;
             this.Serializer = serializer;
             this.Scores = this.Serializer.Load();
+            this.Scores = this.Scores
+                            .OrderBy(x => x.NumberOfGuesses)
+                            .ThenBy(x => x.Time)
+                            .ToList();
         }
 
         private IList<Score> Scores { get; set; }
@@ -22,21 +26,22 @@
 
         private IScoreSerializer Serializer { get; set; }
 
-        public void AddToScoreboard(int guessAttempts)
+        public void AddToScoreboard(int guessAttempts, double playTime)
         {
             if (this.Scores.Count < TopPlayersDisplayCount || this.Scores[TopPlayersDisplayCount - 1].NumberOfGuesses > guessAttempts)
             {
                 this.Notifier.Notify("Please enter your name for the scoreboard: ");
 
                 string playerName = Console.ReadLine().Trim();
-                Score playerScore = new Score(guessAttempts, playerName);
-
-                this.Scores.Add(playerScore);
-                this.Scores.OrderBy(x => x.NumberOfGuesses);
-
-                if (this.Scores.Count > TopPlayersDisplayCount)
+                Score playerScore = new Score(guessAttempts, playerName, playTime);
+                                
+                if (this.Scores.Count == TopPlayersDisplayCount)
                 {
-                    this.Scores.RemoveAt(TopPlayersDisplayCount);
+                    this.Scores[TopPlayersDisplayCount - 1] = playerScore;
+                }
+                else
+                {
+                    this.Scores.Add(playerScore);
                 }
 
                 this.Serializer.Save(this.Scores);

@@ -17,11 +17,11 @@
         public void DisplayScores(IList<Score> scores)
         {
             int padLeftWidth = scores.Max(x => x.PlayerName.Length);
-            int scoreBoardWidth = padLeftWidth + 17;
+            int scoreBoardWidth = padLeftWidth + 26;
 
             Console.WriteLine('┌' + new String('─', scoreBoardWidth) + '┐');
             Console.Write("├─" + new String('─', (int)Math.Ceiling((double)(padLeftWidth - 3) / 2)) + "Player" + new String('─', (padLeftWidth - 3) / 2));
-            Console.WriteLine(new String('─', 4) + "Attempts" + "─┤");
+            Console.WriteLine(new String('─', 4) + "Attempts" + new String('─', 5) + "Time" + "─┤");
             Console.WriteLine('│' + new String(' ', scoreBoardWidth) + '│');
 
             int position = 1;
@@ -29,10 +29,11 @@
             foreach (var score in scores)
             {
                 Console.WriteLine(String.Format(
-                                        "│{0}. {1} ── {2} guesses│",
+                                        "│{0}. {1} ── {2} guesses ── {3:00.00}│",
                                         position++,
                                         score.PlayerName.PadLeft(padLeftWidth),
-                                        score.NumberOfGuesses.ToString().PadRight(2)));
+                                        score.NumberOfGuesses.ToString().PadRight(2),
+                                        score.Time));
             }
 
             Console.WriteLine('└' + new String('─', scoreBoardWidth) + '┘');

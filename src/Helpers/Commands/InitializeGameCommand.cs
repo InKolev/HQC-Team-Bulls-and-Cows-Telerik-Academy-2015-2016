@@ -1,6 +1,6 @@
-﻿
-namespace BullsAndCows.Helpers.Commands
+﻿namespace BullsAndCows.Helpers.Commands
 {
+    using System;
     using Interfaces;
 
     internal class InitializeGameCommand : ICommand
@@ -8,6 +8,7 @@ namespace BullsAndCows.Helpers.Commands
         public InitializeGameCommand(IDataState data, INotifier notifier, INumberGenerator numberGenerator)
         {
             this.Data = data;
+            this.Data.StartTime = DateTime.Now;
             this.Notifier = notifier;
             this.NumberGenerator = numberGenerator;
         }

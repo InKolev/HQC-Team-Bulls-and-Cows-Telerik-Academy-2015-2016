@@ -4,6 +4,6 @@
     {
         void DisplayTopScores();
 
-        void AddToScoreboard(int guessAttempts);
+        void AddToScoreboard(int guessAttempts, double playTime);
     }
 }

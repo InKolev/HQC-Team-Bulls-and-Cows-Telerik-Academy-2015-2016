@@ -41,12 +41,14 @@
 
                 while (currentLine != null)
                 {
-                    int separatorIndex = currentLine.IndexOf(':');
-                    string playerName = currentLine.Substring(0, separatorIndex - 1);
-                    string playerGuesses = currentLine.Substring(separatorIndex + 2, currentLine.Length - separatorIndex - 2);
+                    int firstSeparator = currentLine.IndexOf(':');
+                    int secondSeparator = currentLine.LastIndexOf(':');
+                    string playerName = currentLine.Substring(0, firstSeparator - 1);
+                    string playerGuesses = currentLine.Substring(firstSeparator + 2, secondSeparator - firstSeparator - 3);
                     int guesses = int.Parse(playerGuesses);
+                    double time = double.Parse(currentLine.Substring(secondSeparator + 2, currentLine.Length - secondSeparator - 2));
 
-                    scores.Add(new Score(guesses, playerName));
+                    scores.Add(new Score(guesses, playerName, time));
                     currentLine = reader.ReadLine();
                 }
             }
@@ -62,7 +64,7 @@
             {
                 foreach (var score in scores)
                 {
-                    writer.WriteLine(score);
+                    writer.WriteLine(score.PlayerName + " : " + score.NumberOfGuesses + " : " + score.Time);
                 }
             }
         }

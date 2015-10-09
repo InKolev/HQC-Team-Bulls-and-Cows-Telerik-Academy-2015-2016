@@ -13,6 +13,10 @@ namespace BullsAndCows.Interfaces
 
         bool HasCheated { get; set; }
 
+        DateTime StartTime { get; set; }
+
+        double PlayTime { get; set; }
+
         int GuessAttempts { get; set; }
 
         int GuessAttemptsMaxValue { get; set; }
