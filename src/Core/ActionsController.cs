@@ -5,9 +5,9 @@ namespace BullsAndCows.Core
     using Interfaces;
     using BullsAndCows.Helpers.Commands;
 
-    internal class ActionsController : IController
+    internal class ActionsController : IController, IRunnable
     {
-        public ActionsController(IDataState data, INotifier notifier, IScoreboard scoreboard, INumberGenerator numberGenerator, ICommandsFactory commandsFactory)
+        public ActionsController(IDataState data, INotifier notifier, INumberGenerator numberGenerator, IScoreboard scoreboard, ICommandsFactory commandsFactory)
         {
             this.Data = data;
             this.Notifier = notifier;

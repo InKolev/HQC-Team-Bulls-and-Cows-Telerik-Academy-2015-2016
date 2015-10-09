@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows.Interfaces
 {
-    interface IController
+    public interface IController
     {
         void Run();
     }

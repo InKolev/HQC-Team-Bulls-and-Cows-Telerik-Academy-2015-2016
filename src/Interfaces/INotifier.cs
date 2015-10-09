@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows.Interfaces
 {
-    interface INotifier
+    public interface INotifier
     {
         void Notify(string message);
     }

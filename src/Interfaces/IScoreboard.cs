@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows.Interfaces
 {
-    interface IScoreboard
+    public interface IScoreboard
     {
         void DisplayTopScores();
 

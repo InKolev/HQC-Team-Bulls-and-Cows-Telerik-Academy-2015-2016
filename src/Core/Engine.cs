@@ -5,19 +5,33 @@ namespace BullsAndCows.Core
     using Helpers.Misc;
     using Interfaces;
 
-    internal class Engine
+    internal class Engine : IEngine, IRunnable
     {
-        public static void Main()
+        public void Initialize()
         {
-            IDataState data = new Data();
-            IScoreNotifier notifier = new ConsoleNotifier();
-            INumberGenerator numberGenerator = new RandomNumberGenerator();
-            IScoreboard scoreboard = new Scoreboard(notifier, ScoreSerializer.GetSerializer());
-            ICommandsFactory commandsFactory = new CommandsFactory(data, notifier, numberGenerator, scoreboard);
-            IController actionsController = new ActionsController(data, notifier, scoreboard, numberGenerator, commandsFactory);
-
-            var bullsAndCows = new Game(actionsController);
-            bullsAndCows.Start();
+            this.Data = new Data();
+            this.Notifier = new ConsoleNotifier();
+            this.NumberGenerator = new RandomNumberGenerator();
+            this.Scoreboard = new Scoreboard(this.Notifier, ScoreSerializer.GetSerializer());
+            this.CommandsFactory = new CommandsFactory(this.Data, this.Notifier, this.NumberGenerator, this.Scoreboard);
+            this.Controller = new ActionsController(this.Data, this.Notifier, this.NumberGenerator, this.Scoreboard, this.CommandsFactory);
         }
+
+        public void Run()
+        {
+            this.Controller.Run();
+        }
+
+        public IDataState Data { get; set; }
+
+        public IController Controller { get; set; }
+
+        public IScoreboard Scoreboard { get; set; }
+
+        public IScoreNotifier Notifier { get; set; }
+
+        public INumberGenerator NumberGenerator { get; set; }
+
+        public ICommandsFactory CommandsFactory { get; set; }
     }
 }

@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Helpers;
 
-    interface IScoreNotifier : INotifier
+    public interface IScoreNotifier : INotifier
     {
         void DisplayScores(IList<Score> scores);
     }

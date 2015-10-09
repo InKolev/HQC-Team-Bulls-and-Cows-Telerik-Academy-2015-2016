@@ -1,6 +1,6 @@
 ﻿namespace BullsAndCows.Interfaces
 {
-    interface INumberGenerator
+    public interface INumberGenerator
     {
         string GenerateNumber(int digits);
 

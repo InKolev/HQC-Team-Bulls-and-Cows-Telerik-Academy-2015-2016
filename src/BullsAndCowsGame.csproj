@@ -43,11 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Data.cs" />
-    <Compile Include="Core\Game.cs">
-      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
-    </Compile>
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Engine.cs" />
+    <Compile Include="Core\Program.cs" />
     <Compile Include="Helpers\Commands\ExitGameCommand.cs" />
     <Compile Include="Helpers\Factories\CommandsFactory.cs" />
     <Compile Include="Helpers\Commands\DisplayCommandsListCommand.cs" />
@@ -68,8 +66,10 @@
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\IDataState.cs" />
+    <Compile Include="Interfaces\IEngine.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Interfaces\INotifier.cs" />
+    <Compile Include="Interfaces\IRunnable.cs" />
     <Compile Include="Interfaces\IScoreboard.cs" />
     <Compile Include="Interfaces\IScoreNotifier.cs" />
     <Compile Include="Interfaces\IScoreSerializer.cs" />
