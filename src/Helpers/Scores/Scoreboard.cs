@@ -9,10 +9,11 @@
     {
         private const byte TopPlayersDisplayCount = 10;
 
-        public Scoreboard(IScoreNotifier notifier, IScoreSerializer serializer)
+        public Scoreboard(IScoreNotifier notifier, IScoreSerializer serializer, IActionsReader actionsReader)
         {
             this.Notifier = notifier;
             this.Serializer = serializer;
+            this.ActionsReader = actionsReader;
             this.Scores = this.Serializer.Load();
             this.Scores = this.Scores
                             .OrderBy(x => x.NumberOfGuesses)
@@ -22,6 +23,7 @@
 
         private IList<Score> Scores { get; set; }
 
+        private IActionsReader ActionsReader { get; set; }
         private IScoreNotifier Notifier { get; set; }
 
         private IScoreSerializer Serializer { get; set; }
@@ -32,7 +34,10 @@
             {
                 this.Notifier.Notify("Please enter your name for the scoreboard: ");
 
-                string playerName = Console.ReadLine().Trim();
+                string playerName = String.Empty;
+
+                this.ActionsReader.Read(out playerName);
+
                 Score playerScore = new Score(guessAttempts, playerName, playTime);
                                 
                 if (this.Scores.Count == TopPlayersDisplayCount)
