@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CheatCommandTests.cs" />
+    <Compile Include="DisplayCommandsListCommandTests.cs" />
     <Compile Include="DisplayMessageCommandTests.cs" />
     <Compile Include="DisplayScoreboardCommandTests.cs" />
     <Compile Include="GuessCommandTests.cs" />
