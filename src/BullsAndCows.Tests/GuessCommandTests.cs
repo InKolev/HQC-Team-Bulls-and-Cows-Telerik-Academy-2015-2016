@@ -85,5 +85,32 @@ namespace BullsAndCows.Tests
             Assert.AreEqual(3, data.Cows);
             Assert.AreEqual(1, data.Bulls);
         }
+
+        [TestMethod]
+        public void GuessCommandShouldUpdateGuessAttempts()
+        {
+            IDataState data = new Data();
+            data.NumberToGuess = "1234";
+            INotifier notifier = new ConsoleNotifier();
+            INumberGenerator numberGenerator = new RandomNumberGenerator();
+            GuessCommand guessCommand = new GuessCommand(data, notifier, "1235");
+            guessCommand.Execute();
+            guessCommand.Execute();
+            guessCommand.Execute();
+            guessCommand.Execute();
+            Assert.AreEqual(4, data.GuessAttempts);
+        }
+
+        [TestMethod]
+        public void GuessCommandShouldNotUpdateGuessAttemptsWhenThereAreRepetitions()
+        {
+            IDataState data = new Data();
+            data.NumberToGuess = "1234";
+            INotifier notifier = new ConsoleNotifier();
+            INumberGenerator numberGenerator = new RandomNumberGenerator();
+            GuessCommand guessCommand = new GuessCommand(data, notifier, "1122");
+            guessCommand.Execute();
+            Assert.AreEqual(0, data.GuessAttempts);
+        }
     }
 }
