@@ -13,7 +13,7 @@ namespace BullsAndCows.Tests
     public class QuitGameCommandTests
     {
         [TestMethod]
-        public void DisplayCommandsListCommandShouldCallNotifier()
+        public void QuitGameCommandShouldCallNotifier()
         {
             var mockedNotifier = new Mock<INotifier>();
             IDataState data = new Data();
