@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CheatCommandTests.cs" />
     <Compile Include="DisplayMessageCommandTests.cs" />
+    <Compile Include="DisplayScoreboardCommandTests.cs" />
     <Compile Include="GuessCommandTests.cs" />
     <Compile Include="InitializeGameCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
