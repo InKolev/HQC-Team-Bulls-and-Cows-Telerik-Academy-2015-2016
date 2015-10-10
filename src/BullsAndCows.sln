@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCowsGame", "BullsAndCowsGame.csproj", "{329FB67C-6AEC-4593-ABCB-DE811A8949C1}"
 EndProject
@@ -38,6 +38,7 @@ Global
 		{F9AB9909-FEAA-4128-8DB9-18294AD70464}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F9AB9909-FEAA-4128-8DB9-18294AD70464}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F9AB9909-FEAA-4128-8DB9-18294AD70464}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9AB9909-FEAA-4128-8DB9-18294AD70464}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
