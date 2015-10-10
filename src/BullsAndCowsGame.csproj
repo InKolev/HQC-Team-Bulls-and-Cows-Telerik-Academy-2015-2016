@@ -74,6 +74,7 @@
     <Compile Include="Interfaces\IScoreNotifier.cs" />
     <Compile Include="Interfaces\IScoreSerializer.cs" />
     <Compile Include="Interfaces\ICommandsFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
