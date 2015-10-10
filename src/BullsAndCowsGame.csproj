@@ -57,6 +57,7 @@
     <Compile Include="Helpers\Commands\QuitGameCommand.cs" />
     <Compile Include="Helpers\Commands\WinGameCommand.cs" />
     <Compile Include="Helpers\Misc\RandomNumberGenerator.cs" />
+    <Compile Include="Helpers\Readers\ConsoleReader.cs" />
     <Compile Include="Helpers\Scores\ScoreSerializer.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
@@ -69,6 +70,7 @@
     <Compile Include="Interfaces\IEngine.cs" />
     <Compile Include="Interfaces\INumberGenerator.cs" />
     <Compile Include="Interfaces\INotifier.cs" />
+    <Compile Include="Interfaces\IActionsReader.cs" />
     <Compile Include="Interfaces\IRunnable.cs" />
     <Compile Include="Interfaces\IScoreboard.cs" />
     <Compile Include="Interfaces\IScoreNotifier.cs" />
