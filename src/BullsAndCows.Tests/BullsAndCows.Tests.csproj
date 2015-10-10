@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CheatCommandTests.cs" />
     <Compile Include="GuessCommandTests.cs" />
     <Compile Include="InitializeGameCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
