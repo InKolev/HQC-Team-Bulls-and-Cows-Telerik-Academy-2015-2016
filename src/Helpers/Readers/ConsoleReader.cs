@@ -8,9 +8,11 @@ namespace BullsAndCows.Helpers.Readers
 {
     internal class ConsoleReader : IActionsReader
     {
-        public void Read(out string input)
+        public string Read()
         {
-            input = Console.ReadLine().Trim();
+            var input = Console.ReadLine().Trim();
+
+            return input;
         }
     }
 }

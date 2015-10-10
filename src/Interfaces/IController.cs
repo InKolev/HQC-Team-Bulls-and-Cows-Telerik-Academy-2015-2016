@@ -6,6 +6,8 @@
 
         IActionsReader ActionsReader { get; set; }
 
+        void ReadAction();
+
         void Run();
     }
 }

@@ -17,6 +17,8 @@ namespace BullsAndCows.Core
             this.NumberGenerator = numberGenerator;
         }
 
+        public bool IsRunning { get; private set; }
+
         public IActionsReader ActionsReader { get; set; }
 
         public INotifier Notifier { get; set; }
@@ -29,19 +31,17 @@ namespace BullsAndCows.Core
 
         public IDataState Data { get; set; }
 
-        private bool ReadAction()
+        public void ReadAction()
         {
             string input = String.Empty;
 
             this.Notifier.Notify("Enter your Guess/Command: ");
 
-            this.ActionsReader.Read(out input);
+            input = this.ActionsReader.Read();
 
             var command = this.CommandsFactory.GetCommand(input);
 
-            bool isRunning = command.Execute();
-
-            return isRunning;
+            this.IsRunning = command.Execute();
         }
 
         public void Run()
@@ -50,26 +50,28 @@ namespace BullsAndCows.Core
                 .GetCommand("start")
                 .Execute();
 
-            bool isRunning = true;
+            this.IsRunning = true;
 
             while (true)
             {
-                while (isRunning)
+                while (this.IsRunning)
                 {
-                    isRunning = ReadAction();
+                    this.ReadAction();
                 }
 
                 this.Notifier.Notify("Would you like to play again? \"y\" or \"n\" ");
 
-                string answer = String.Empty;
-
-                this.ActionsReader.Read(out answer);
+                var answer = this.ActionsReader.Read();
 
                 if (answer.Equals("y") || answer.Equals("Y"))
                 {
                     Run();
                 }
                 else if (answer.Equals("n") || answer.Equals("N"))
+                {
+                    break;
+                }
+                else if(answer.Equals("exit"))
                 {
                     break;
                 }

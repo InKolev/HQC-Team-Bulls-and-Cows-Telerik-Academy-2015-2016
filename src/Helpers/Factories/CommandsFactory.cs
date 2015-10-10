@@ -69,6 +69,11 @@ namespace BullsAndCows.Helpers
                             commandExecutor = new ExitGameCommand(this.Notifier);
                             break;
                         }
+                    case "empty":
+                        {
+                            commandExecutor = new EmptyCommand();
+                            break;
+                        }
                     default:
                         {
                             commandExecutor = ProcessGuessAndReturnAppropriateCommand(command);

@@ -49,6 +49,7 @@
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Program.cs" />
+    <Compile Include="Helpers\Commands\EmptyCommand.cs" />
     <Compile Include="Helpers\Commands\ExitGameCommand.cs" />
     <Compile Include="Helpers\Factories\CommandsFactory.cs" />
     <Compile Include="Helpers\Commands\DisplayCommandsListCommand.cs" />

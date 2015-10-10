@@ -61,6 +61,7 @@
     <Compile Include="InitializeGameCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuitGameCommandTests.cs" />
+    <Compile Include="ActionsControllerTest.cs" />
     <Compile Include="WinGameCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>

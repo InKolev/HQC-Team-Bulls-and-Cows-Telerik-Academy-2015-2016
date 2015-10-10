@@ -34,9 +34,7 @@
             {
                 this.Notifier.Notify("Please enter your name for the scoreboard: ");
 
-                string playerName = String.Empty;
-
-                this.ActionsReader.Read(out playerName);
+                var playerName = this.ActionsReader.Read();
 
                 Score playerScore = new Score(guessAttempts, playerName, playTime);
                                 

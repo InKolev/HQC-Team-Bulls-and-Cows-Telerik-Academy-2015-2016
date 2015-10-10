@@ -7,6 +7,6 @@ namespace BullsAndCows.Interfaces
 {
     public interface IActionsReader
     {
-        void Read(out string input);
+        string Read();
     }
 }
