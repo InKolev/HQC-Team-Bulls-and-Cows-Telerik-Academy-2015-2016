@@ -59,6 +59,7 @@
     <Compile Include="GuessCommandTests.cs" />
     <Compile Include="InitializeGameCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinGameCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BullsAndCowsGame.csproj">
