@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+﻿
 namespace BullsAndCows.Tests
 {
     using System;
