@@ -67,13 +67,9 @@ namespace BullsAndCows.Core
                 {
                     Run();
                 }
-                else if (answer.Equals("n") || answer.Equals("N"))
+                else
                 {
-                    break;
-                }
-                else if(answer.Equals("exit"))
-                {
-                    break;
+                    return;
                 }
             }
         }

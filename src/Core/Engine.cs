@@ -5,6 +5,7 @@ namespace BullsAndCows.Core
     using Helpers;
     using Helpers.Misc;
     using Interfaces;
+    using System;
 
     internal class Engine : IEngine, IRunnable
     {
@@ -17,12 +18,22 @@ namespace BullsAndCows.Core
             this.Scoreboard = new Scoreboard(this.Notifier, ScoreSerializer.GetSerializer(), this.ActionsReader);
             this.CommandsFactory = new CommandsFactory(this.Data, this.Notifier, this.NumberGenerator, this.Scoreboard);
             this.Controller = new ActionsController(this.Data, this.Notifier, this.NumberGenerator, this.Scoreboard, this.CommandsFactory, this.ActionsReader);
+            this.ReadyToRun = true;
         }
 
         public void Run()
         {
-            this.Controller.Run();
+            if(this.ReadyToRun)
+            {
+                this.Controller.Run();
+            }
+            else
+            {
+                throw new ArgumentException("Initialize() method was not called. In order to run the engine - you must first initialize all of its properties.");
+            }
         }
+
+        public bool ReadyToRun { get; set; }
 
         public IDataState Data { get; set; }
 

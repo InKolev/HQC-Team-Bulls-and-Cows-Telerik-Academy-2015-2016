@@ -11,7 +11,7 @@ namespace BullsAndCows.Helpers.Commands
     {
         public bool Execute()
         {
-            return true;
+            return false;
         }
     }
 }
