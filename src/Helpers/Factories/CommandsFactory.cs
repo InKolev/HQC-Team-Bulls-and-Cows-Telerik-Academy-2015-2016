@@ -13,6 +13,10 @@ namespace BullsAndCows.Helpers
 
     internal class CommandsFactory : ICommandsFactory
     {
+        private const string FourDigitsPatternForRegex = "[0-9][0-9][0-9][0-9]";
+        private const string MaxGuessesLimitMessage = "You have reached the maximum guess limit. You can't even finish a Bulls And Cows game. You are as dumb as you look...";
+        private const string InputWarningMessage = "Please enter a 4-digit number or one of the commands: ";
+       
         public CommandsFactory(IDataState data, INotifier notifier, INumberGenerator numberGenerator, IScoreboard scoreboard)
         {
             this.Data = data;
@@ -20,7 +24,7 @@ namespace BullsAndCows.Helpers
             this.Scoreboard = scoreboard;
             this.NumberGenerator = numberGenerator;
             this.CommandsList = new Dictionary<string, ICommand>();
-            this.FourDigitNumberPattern = new Regex("[0-9][0-9][0-9][0-9]");
+            this.FourDigitNumberPattern = new Regex(FourDigitsPatternForRegex);
         }
 
         public Dictionary<string, ICommand> CommandsList { get; private set; }
@@ -121,12 +125,12 @@ namespace BullsAndCows.Helpers
                 }
                 else
                 {
-                    commandExecutor = new DisplayMessageCommand(this.Notifier, false, "You have reached the maximum guess limit. You can't even finish a Bulls And Cows game. You are as dumb as you look...");
+                    commandExecutor = new DisplayMessageCommand(this.Notifier, false, MaxGuessesLimitMessage);
                 }
             }
             else
             {
-                commandExecutor = new DisplayMessageCommand(this.Notifier, true, "Please enter a 4-digit number or one of the commands: ");
+                commandExecutor = new DisplayMessageCommand(this.Notifier, true, InputWarningMessage);
             }
 
             return commandExecutor;

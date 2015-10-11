@@ -96,5 +96,18 @@ Sample Refactoring Documentation for Project “Bulls and Cows 5”
 
 4.  Introduced constants:
 	-   `NUMBER_SIZE = 4`
-
+	-   `IncorrectInputMessage = "Incorrect number. The guess cannot contain repeatable digits."`
+	-   `PlayAgainMessage = "Would you like to play again? \"y\" or \"n\" "`
+	-   `EnterCommandMessage = "Enter your Guess/Command: "`
+	-   `NotifierIntroCallMessage = "IntroductionCall"`
+	-   `NotifierCommandsCallMessage = "CommandsCall"`
+	-   `NotifierNewGameStartedMessage = "New game started. Wish you luck."`
+	-   `CheatHelperInitialValue = "XXXX"`
+	-   `GameFinishedMessage = "Game finished."`
+	-   `ExitGameMessage = "Exitting game..."`
+	-   `FourDigitsPatternForRegex = "[0-9][0-9][0-9][0-9]"`
+	-   `InputWarningMessage = "Please enter a 4-digit number or one of the commands: "`
+	-   `MaxGuessesLimitMessage = "You have reached the maximum guess limit. You can't even finish a Bulls And Cows game. You are as dumb as you look..."`
+	-   `EnterPlayerNameMessage = "Please enter your name for the scoreboard: "`
+	-   `EmptyScoreboardMessage = "The scoreboard is empty."`
 

@@ -9,6 +9,8 @@ namespace BullsAndCows.Helpers.Commands
 
     internal class QuitGameCommand : ICommand
     {
+        private const string GameFinishedMessage = "Game finished.";
+
         public QuitGameCommand(INotifier notifier)
         {
             this.Notifier = notifier;
@@ -18,7 +20,7 @@ namespace BullsAndCows.Helpers.Commands
 
         public bool Execute()
         {
-            this.Notifier.Notify("Game finished.");
+            this.Notifier.Notify(GameFinishedMessage);
             return false;
         }
     }

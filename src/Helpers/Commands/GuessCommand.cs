@@ -11,6 +11,8 @@ namespace BullsAndCows.Helpers.Commands
 
     internal class GuessCommand : ICommand
     {
+        private const string IncorrectInputMessage = "Incorrect number. The guess cannot contain repeatable digits.";
+
         public GuessCommand(IDataState data, INotifier notifier, string guess)
         {
             this.Data = data;
@@ -45,7 +47,7 @@ namespace BullsAndCows.Helpers.Commands
 
             if (hasRepetitions)
             {
-                this.Notifier.Notify("Incorrect number. The guess cannot contain repeatable digits.");
+                this.Notifier.Notify(IncorrectInputMessage);
             }
             else
             {
