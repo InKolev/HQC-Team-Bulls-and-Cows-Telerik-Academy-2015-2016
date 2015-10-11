@@ -10,6 +10,30 @@ namespace BullsAndCows.Helpers.Validators
 
     internal class Validator : IValidator
     {
+        private static Validator instance;
+        private static object syncLock = new object();
+
+        protected Validator()
+        {
+
+        }
+
+        public Validator GetInstance()
+        {
+            if (instance == null)
+            {
+                lock (syncLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new Validator();
+                    }
+                }
+            }
+
+            return instance;
+        }
+
         public bool ValidateName(string name)
         {
             throw new NotImplementedException();
