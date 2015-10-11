@@ -53,18 +53,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CheatCommandTests.cs" />
-    <Compile Include="CommandsFactoryTests.cs" />
-    <Compile Include="DisplayCommandsListCommandTests.cs" />
-    <Compile Include="DisplayMessageCommandTests.cs" />
-    <Compile Include="DisplayScoreboardCommandTests.cs" />
-    <Compile Include="GuessCommandTests.cs" />
-    <Compile Include="InitializeGameCommandTests.cs" />
+    <Compile Include="CommandsTests\CheatCommandTests.cs" />
+    <Compile Include="FactoriesTests\CommandsFactoryTests.cs" />
+    <Compile Include="CommandsTests\DisplayCommandsListCommandTests.cs" />
+    <Compile Include="CommandsTests\DisplayMessageCommandTests.cs" />
+    <Compile Include="CommandsTests\DisplayScoreboardCommandTests.cs" />
+    <Compile Include="CommandsTests\GuessCommandTests.cs" />
+    <Compile Include="CommandsTests\InitializeGameCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuitGameCommandTests.cs" />
-    <Compile Include="ActionsControllerTests.cs" />
-    <Compile Include="EngineTests.cs" />
-    <Compile Include="WinGameCommandTests.cs" />
+    <Compile Include="CommandsTests\QuitGameCommandTests.cs" />
+    <Compile Include="ControllersTests\ActionsControllerTests.cs" />
+    <Compile Include="EnginesTests\EngineTests.cs" />
+    <Compile Include="CommandsTests\WinGameCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BullsAndCowsGame.csproj">
@@ -75,6 +75,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
