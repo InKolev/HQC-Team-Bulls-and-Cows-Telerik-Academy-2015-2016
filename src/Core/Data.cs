@@ -8,6 +8,9 @@ namespace BullsAndCows.Core
     using System;
     using BullsAndCows.Interfaces;
 
+    /// <summary>
+    /// Holds the data state of the application
+    /// </summary>
     internal class Data : IDataState
     {
         public string CheatHelper { get; set; }

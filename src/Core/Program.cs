@@ -5,13 +5,14 @@
 
 namespace BullsAndCows.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
+    /// <summary>
+    /// Main Entry Point for the Application
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Main Class for the Application
+        /// </summary>
         public static void Main()
         {
             var engine = new Engine();

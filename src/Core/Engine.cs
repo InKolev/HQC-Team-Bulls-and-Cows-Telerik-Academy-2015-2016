@@ -11,6 +11,9 @@ namespace BullsAndCows.Core
     using Helpers.Misc;
     using Interfaces;
 
+    /// <summary>
+    /// Application Engine
+    /// </summary>
     internal class Engine : IEngine, IRunnable
     {
         public bool ReadyToRun { get; set; }
@@ -29,6 +32,9 @@ namespace BullsAndCows.Core
 
         public ICommandsFactory CommandsFactory { get; set; }
 
+        /// <summary>
+        /// Initializes the application
+        /// </summary>
         public void Initialize()
         {
             this.Data = new Data();
@@ -41,6 +47,9 @@ namespace BullsAndCows.Core
             this.ReadyToRun = true;
         }
 
+        /// <summary>
+        /// Runs the actions controller
+        /// </summary>
         public void Run()
         {
             if (this.ReadyToRun)

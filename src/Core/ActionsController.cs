@@ -9,6 +9,9 @@ namespace BullsAndCows.Core
     using Interfaces;
     using BullsAndCows.Helpers.Commands;
 
+    /// <summary>
+    /// Application Actions Controller 
+    /// </summary>
     internal class ActionsController : IController, IRunnable
     {
         private const string EnterCommandMessage = "Enter your Guess/Command: ";
@@ -38,6 +41,9 @@ namespace BullsAndCows.Core
 
         public IDataState Data { get; set; }
 
+        /// <summary>
+        /// Reads actions from user input
+        /// </summary>
         public void ReadAction()
         {
             string input = string.Empty;
@@ -51,6 +57,9 @@ namespace BullsAndCows.Core
             this.IsRunning = command.Execute();
         }
 
+        /// <summary>
+        /// Runs the controller
+        /// </summary>
         public void Run()
         {
             this.CommandsFactory
