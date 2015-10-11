@@ -14,10 +14,10 @@ namespace BullsAndCows.Helpers
     {
         public ConsoleNotifier()
         {
-            this.WindowWidth = Console.WindowWidth;
+            //this.WindowWidth = Console.WindowWidth;
         }
 
-        private int WindowWidth { get; set; }
+        // int WindowWidth { get; set; }
         
         public void DisplayScores(IList<Score> scores)
         {
@@ -70,11 +70,15 @@ namespace BullsAndCows.Helpers
 
         private void DisplayIntroductionMessage()
         {
-            string welcomeMessage = "   Welcome to “Bulls and Cows” game. Try to guess my secret 4-digit number. The digits inside the secret number cannot be repeated. Have fun!";
-
-            Console.WriteLine(new string('*', this.WindowWidth - 1));
+            string welcomeMessage = @"┌─────────────────────────────────────────────────────┐
+│ Welcome to “Bulls and Cows” game.Try to guess my    │
+│ secret 4 - digit number.The digits inside the secret│
+│ number cannot be repeated.Have fun!                 │
+└─────────────────────────────────────────────────────┘
+";
+            //Console.WriteLine(new string('*', this.WindowWidth - 1));
             Console.WriteLine(welcomeMessage);
-            Console.WriteLine(new string('*', this.WindowWidth - 1));
+            //Console.WriteLine(new string('*', this.WindowWidth - 1));
         }
 
         private void DisplayCommandsList()

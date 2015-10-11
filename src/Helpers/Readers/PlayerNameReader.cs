@@ -12,7 +12,7 @@ namespace BullsAndCows.Helpers.Readers
 
     internal class PlayerNameReader : IActionsReader
     {
-        private const string InvalidNameMessage = "Name should be between 3 and 50 characters long and contain only latin letters, digits and space! Please choose another name.";
+        private const string InvalidNameMessage = "Name should be between 3 and 50 characters long and contain only latin letters, digits and space! Please choose another name: ";
 
         public PlayerNameReader()
             : this(Validator.GetValidator(), new ConsoleNotifier())
