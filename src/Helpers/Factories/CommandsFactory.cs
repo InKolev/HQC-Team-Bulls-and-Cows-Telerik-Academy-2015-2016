@@ -2,6 +2,7 @@
 
 namespace BullsAndCows.Helpers
 {
+    using System;
     using Commands;
     using Interfaces;
     using System.Collections.Generic;
