@@ -7,6 +7,7 @@ namespace BullsAndCows.Helpers.Validators
 {
     using System;
     using Interfaces;
+    using System.Text.RegularExpressions;
 
     internal class Validator : IValidator
     {
@@ -18,7 +19,7 @@ namespace BullsAndCows.Helpers.Validators
 
         }
 
-        public Validator GetInstance()
+        public static Validator GetValidator()
         {
             if (instance == null)
             {
@@ -36,7 +37,12 @@ namespace BullsAndCows.Helpers.Validators
 
         public bool ValidateName(string name)
         {
-            throw new NotImplementedException();
+            if (name.Length < 3 || name.Length > 50)
+            {
+                return false;
+            }
+
+            return Regex.IsMatch(name, @"[\w \d]+");
         }
     }
 }
