@@ -42,7 +42,7 @@ namespace BullsAndCows.Helpers.Validators
                 return false;
             }
 
-            return Regex.IsMatch(name, @"[\w \d]+");
+            return !Regex.IsMatch(name, @"[^\w \d]");
         }
     }
 }

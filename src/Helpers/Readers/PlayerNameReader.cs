@@ -1,4 +1,4 @@
-﻿// <copyright  file="ConsoleReader.cs" company="TA-HQC-Team-Bulls-And-Cows">
+﻿// <copyright  file="PlayerNameReader.cs" company="TA-HQC-Team-Bulls-And-Cows">
 // All rights reserved.
 // </copyright>
 // <authors>vot24100, InKolev, mdraganov</authors>
@@ -15,9 +15,8 @@ namespace BullsAndCows.Helpers.Readers
         private const string InvalidNameMessage = "Name should be between 3 and 50 characters long and contain only latin letters, digits and space! Please choose another name.";
 
         public PlayerNameReader()
-            :this(Validator.GetValidator(), new ConsoleNotifier())
+            : this(Validator.GetValidator(), new ConsoleNotifier())
         {
-
         }
 
         public PlayerNameReader(IValidator validator, INotifier notifier)
@@ -27,11 +26,12 @@ namespace BullsAndCows.Helpers.Readers
         }
 
         private IValidator InputValidator { get; set; }
+
         private INotifier Notifier { get; set; }
-        
+
         public string Read()
         {
-            string input = Console.ReadLine().Trim(); 
+            string input = Console.ReadLine().Trim();
 
             while (true)
             {

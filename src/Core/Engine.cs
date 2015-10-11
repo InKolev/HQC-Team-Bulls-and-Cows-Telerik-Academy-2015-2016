@@ -35,7 +35,7 @@ namespace BullsAndCows.Core
             this.ActionsReader = new ConsoleReader();
             this.Notifier = new ConsoleNotifier();
             this.NumberGenerator = new RandomNumberGenerator();
-            this.Scoreboard = new Scoreboard(this.Notifier, ScoreSerializer.GetSerializer(), this.ActionsReader);
+            this.Scoreboard = new Scoreboard(this.Notifier, ScoreSerializer.GetSerializer(), new PlayerNameReader());
             this.CommandsFactory = new CommandsFactory(this.Data, this.Notifier, this.NumberGenerator, this.Scoreboard);
             this.Controller = new ActionsController(this.Data, this.Notifier, this.NumberGenerator, this.Scoreboard, this.CommandsFactory, this.ActionsReader);
             this.ReadyToRun = true;

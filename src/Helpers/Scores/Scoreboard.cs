@@ -22,10 +22,7 @@ namespace BullsAndCows.Helpers
             this.Serializer = serializer;
             this.ActionsReader = actionsReader;
             this.Scores = this.Serializer.Load();
-            this.Scores = this.Scores
-                            .OrderBy(x => x.NumberOfGuesses)
-                            .ThenBy(x => x.Time)
-                            .ToList();
+            this.Scores = this.SortScores();
         }
 
         private IList<Score> Scores { get; set; }
@@ -45,20 +42,18 @@ namespace BullsAndCows.Helpers
                 var playerName = this.ActionsReader.Read();
 
                 Score playerScore = new Score(guessAttempts, playerName, playTime);
-                                
-                if (this.Scores.Count == TopPlayersDisplayCount)
+                this.Scores.Add(playerScore);
+                this.Scores = this.SortScores();
+                
+                if (this.Scores.Count > TopPlayersDisplayCount)
                 {
-                    this.Scores[TopPlayersDisplayCount - 1] = playerScore;
-                }
-                else
-                {
-                    this.Scores.Add(playerScore);
+                    this.Scores.RemoveAt(this.Scores.Count - 1);
                 }
 
                 this.Serializer.Save(this.Scores);
             }
         }
-
+        
         public void DisplayTopScores()
         {
             if (this.Scores.Count > 0)
@@ -69,6 +64,11 @@ namespace BullsAndCows.Helpers
             {
                 this.Notifier.Notify(EmptyScoreboardMessage);
             }
+        }
+
+        private IList<Score> SortScores()
+        {
+            return this.Scores.OrderBy(x => x.NumberOfGuesses).ThenBy(x => x.Time).ToList();
         }
     }
 }
