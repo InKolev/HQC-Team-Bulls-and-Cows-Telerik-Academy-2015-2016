@@ -10,8 +10,16 @@ namespace BullsAndCows.Interfaces
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// Interface for the commands factory
+    /// </summary>
     public interface ICommandsFactory
     {
+        /// <summary>
+        /// Creates a command
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns>The created command</returns>
         ICommand GetCommand(string command);
     }
 }

@@ -5,8 +5,15 @@
 
 namespace BullsAndCows.Interfaces
 {
+    /// <summary>
+    /// Interface for the application commands
+    /// </summary>
     public interface ICommand
     {
+        /// <summary>
+        /// Executes the command
+        /// </summary>
+        /// <returns>If the game continues</returns>
         bool Execute();
     }
 }
