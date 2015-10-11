@@ -20,8 +20,8 @@ namespace BullsAndCows.Helpers.Commands
         {
             this.Notifier.Notify("Exitting game...");
 
-            Thread.Sleep(500);
-            Environment.Exit(0);
+            //Thread.Sleep(500);
+            //Environment.Exit(0);
 
             return false;
         }

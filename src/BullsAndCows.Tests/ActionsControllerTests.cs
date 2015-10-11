@@ -13,7 +13,7 @@ namespace BullsAndCows.Tests
     public class ActionsControllerTest
     {
         [TestMethod]
-        public void CheckIfActionsControllerReadActionMethodReturnsTrueWhenDisplayCommandsCommandIsCalled()
+        public void CheckIfActionsControllerReadActionMethodReturnsFalseWhenExitCommandCommandIsCalled()
         {
             var data = new Data();
 
@@ -27,7 +27,8 @@ namespace BullsAndCows.Tests
 
             var mockedNotifier = new Mock<INotifier>();
             mockedNotifier.Setup(x => x.Notify(
-                It.IsAny<string>()));
+                It.IsAny<string>()))
+                .Verifiable();
 
             var mockedCommandsFactory = new Mock<ICommandsFactory>();
             mockedCommandsFactory.Setup(x => x.GetCommand(
@@ -37,7 +38,7 @@ namespace BullsAndCows.Tests
             var controller = new ActionsController(data, mockedNotifier.Object, mockednumberGenerator.Object, mockedScoreboard.Object, mockedCommandsFactory.Object, mockedActionsReader.Object);
             controller.Run();
 
-            Assert.AreEqual(true, controller.IsRunning);
+            Assert.AreEqual(false, controller.IsRunning);
         }
     }
 }
