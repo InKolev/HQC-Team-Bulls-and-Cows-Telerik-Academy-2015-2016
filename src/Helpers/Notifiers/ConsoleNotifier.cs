@@ -10,6 +10,9 @@ namespace BullsAndCows.Helpers
     using System.Linq;
     using Interfaces;
 
+    /// <summary>
+    /// Class for notifying the user
+    /// </summary>
     internal class ConsoleNotifier : IScoreNotifier, INotifier
     {
         public ConsoleNotifier()
@@ -19,6 +22,10 @@ namespace BullsAndCows.Helpers
 
         private int WindowWidth { get; set; }
         
+        /// <summary>
+        /// Displays the list with the scores
+        /// </summary>
+        /// <param name="scores"></param>
         public void DisplayScores(IList<Score> scores)
         {
             int padLeftWidth = scores.Max(x => x.PlayerName.Length);
@@ -44,6 +51,10 @@ namespace BullsAndCows.Helpers
             Console.WriteLine('└' + new string('─', scoreBoardWidth) + '┘');
         }
 
+        /// <summary>
+        /// Notifies the user 
+        /// </summary>
+        /// <param name="message">Notification message</param>
         public void Notify(string message)
         {
             switch (message)
@@ -68,6 +79,9 @@ namespace BullsAndCows.Helpers
             }
         }
 
+        /// <summary>
+        /// Displays message in the beginning of the game
+        /// </summary>
         private void DisplayIntroductionMessage()
         {
             string welcomeMessage = "   Welcome to “Bulls and Cows” game. Try to guess my secret 4-digit number. The digits inside the secret number cannot be repeated. Have fun!";
@@ -77,6 +91,9 @@ namespace BullsAndCows.Helpers
             Console.WriteLine(new string('*', this.WindowWidth - 1));
         }
 
+        /// <summary>
+        /// Displays the available commands
+        /// </summary>
         private void DisplayCommandsList()
         {
             Console.WriteLine("\"commands\" - to display the commands list.");

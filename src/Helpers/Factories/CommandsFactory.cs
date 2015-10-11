@@ -11,6 +11,9 @@ namespace BullsAndCows.Helpers
     using Commands;
     using Interfaces;
 
+    /// <summary>
+    /// Commands Factory Class
+    /// </summary>
     internal class CommandsFactory : ICommandsFactory
     {
         private const string FourDigitsPatternForRegex = "[0-9][0-9][0-9][0-9]";
@@ -39,6 +42,11 @@ namespace BullsAndCows.Helpers
 
         public IScoreboard Scoreboard { get; private set; }
 
+        /// <summary>
+        /// Creates a command according to the user input
+        /// </summary>
+        /// <param name="command">Command to be created</param>
+        /// <returns>The created command</returns>
         public ICommand GetCommand(string command)
         {
             if (!this.CommandsList.ContainsKey(command))
@@ -106,6 +114,11 @@ namespace BullsAndCows.Helpers
             }
         }
 
+        /// <summary>
+        /// Checks if the user input is correct and creates corresponding command
+        /// </summary>
+        /// <param name="command">User input command</param>
+        /// <returns>The created command</returns>
         private ICommand ProcessGuessAndReturnAppropriateCommand(string command)
         {
             ICommand commandExecutor = null;

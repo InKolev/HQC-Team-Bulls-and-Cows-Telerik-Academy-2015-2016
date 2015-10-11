@@ -10,6 +10,9 @@ namespace BullsAndCows.Helpers.Readers
     using BullsAndCows.Helpers.Validators;
     using BullsAndCows.Helpers;
 
+    /// <summary>
+    /// Class for reading the player's name
+    /// </summary>
     internal class PlayerNameReader : IActionsReader
     {
         private const string InvalidNameMessage = "Name should be between 3 and 50 characters long and contain only latin letters, digits and space! Please choose another name.";
@@ -29,6 +32,10 @@ namespace BullsAndCows.Helpers.Readers
 
         private INotifier Notifier { get; set; }
 
+        /// <summary>
+        /// Reads the player's name
+        /// </summary>
+        /// <returns>String input</returns>
         public string Read()
         {
             string input = Console.ReadLine().Trim();

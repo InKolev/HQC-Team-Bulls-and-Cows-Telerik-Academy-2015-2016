@@ -9,6 +9,9 @@ namespace BullsAndCows.Helpers.Misc
     using System.Text;
     using Interfaces;
 
+    /// <summary>
+    /// Class for creating random numbers
+    /// </summary>
     internal class RandomNumberGenerator : INumberGenerator
     {
         public RandomNumberGenerator()
@@ -18,6 +21,11 @@ namespace BullsAndCows.Helpers.Misc
 
         private Random RandomGenerator { get; set; }
 
+        /// <summary>
+        /// Generates a random number
+        /// </summary>
+        /// <param name="digits">The needed number of digits</param>
+        /// <returns>String with the generated random number</returns>
         public string GenerateNumber(int digits)
         {
             var generatedNumber = new StringBuilder();
@@ -35,6 +43,12 @@ namespace BullsAndCows.Helpers.Misc
             return generatedNumber.ToString();
         }
 
+        /// <summary>
+        /// Generates a random number in a range
+        /// </summary>
+        /// <param name="minValue">Left border of the range</param>
+        /// <param name="maxValue">Right border of the range</param>
+        /// <returns>A random number</returns>
         public int Next(int minValue, int maxValue)
         {
             return this.RandomGenerator.Next(minValue, maxValue);
