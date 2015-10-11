@@ -1,14 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BullsAndCows.Helpers;
-using BullsAndCows.Helpers.Commands;
-using BullsAndCows.Helpers.Misc;
-using BullsAndCows.Interfaces;
-using BullsAndCows.Core;
-using Moq;
-
-namespace BullsAndCows.Tests
+﻿namespace BullsAndCows.Tests
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using BullsAndCows.Helpers;
+    using BullsAndCows.Helpers.Commands;
+    using BullsAndCows.Helpers.Misc;
+    using BullsAndCows.Interfaces;
+    using BullsAndCows.Core;
+    using Moq;
+
     [TestClass]
     public class GuessCommandTests
     {

@@ -7,8 +7,17 @@ namespace BullsAndCows.Helpers.Commands
 {
     using BullsAndCows.Interfaces;
 
+    /// <summary>
+    /// The concrete implementation for display message command.
+    /// </summary>
     internal class DisplayMessageCommand : ICommand
     {
+        /// <summary>
+        /// The constructor for display message command which accepts a notifier, a boolean value to be returned from the Execute method, and a message.
+        /// </summary>
+        /// <param name="notifier"></param>
+        /// <param name="returnValue"></param>
+        /// <param name="message"></param>
         public DisplayMessageCommand(INotifier notifier, bool returnValue, string message)
         {
             this.Notifier = notifier;

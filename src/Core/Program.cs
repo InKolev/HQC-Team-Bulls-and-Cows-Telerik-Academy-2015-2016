@@ -11,7 +11,7 @@ namespace BullsAndCows.Core
     internal class Program
     {
         /// <summary>
-        /// Main Class for the Application
+        /// The Main Entry Point for the Application
         /// </summary>
         public static void Main()
         {

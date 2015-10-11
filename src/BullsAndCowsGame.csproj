@@ -45,8 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Data.cs" />
     <Compile Include="Core\ActionsController.cs" />
+    <Compile Include="Core\Data.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Helpers\Commands\EmptyCommand.cs" />
