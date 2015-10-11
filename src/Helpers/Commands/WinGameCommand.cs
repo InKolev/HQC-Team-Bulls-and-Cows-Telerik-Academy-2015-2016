@@ -10,6 +10,8 @@ namespace BullsAndCows.Helpers.Commands
 
     internal class WinGameCommand : ICommand
     {
+        private const string CongratsMessage = "Congratulations! You have guessed the secret number.";
+
         public WinGameCommand(INotifier notifier, IScoreboard scoreboard, IDataState data)
         {
             this.Data = data;
@@ -26,7 +28,7 @@ namespace BullsAndCows.Helpers.Commands
 
         public bool Execute()
         {
-            this.Notifier.Notify("Congratulations! You have guessed the secret number.");
+            this.Notifier.Notify(CongratsMessage);
 
             if (!this.Data.HasCheated)
             {

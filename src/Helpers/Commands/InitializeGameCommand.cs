@@ -10,6 +10,11 @@ namespace BullsAndCows.Helpers.Commands
 
     internal class InitializeGameCommand : ICommand
     {
+        private const string NotifierIntroCallMessage = "IntroductionCall";
+        private const string NotifierCommandsCallMessage = "CommandsCall";
+        private const string NotifierNewGameStartedMessage = "New game started. Wish you luck.";
+        private const string CheatHelperInitialValue = "XXXX";
+
         public InitializeGameCommand(IDataState data, INotifier notifier, INumberGenerator numberGenerator)
         {
             this.Data = data;
@@ -26,15 +31,15 @@ namespace BullsAndCows.Helpers.Commands
 
         public bool Execute()
         {
-            this.Notifier.Notify("IntroductionCall");
-            this.Notifier.Notify("CommandsCall");
-            this.Notifier.Notify("New game started. Wish you luck.");
+            this.Notifier.Notify(NotifierIntroCallMessage);
+            this.Notifier.Notify(NotifierCommandsCallMessage);
+            this.Notifier.Notify(NotifierNewGameStartedMessage);
 
             this.Data.GuessAttemptsMaxValue = 25;
             this.Data.NumberToGuess = this.NumberGenerator.GenerateNumber(4);
             this.Data.GuessAttempts = 1;
 
-            this.Data.CheatHelper = "XXXX";
+            this.Data.CheatHelper = CheatHelperInitialValue;
             this.Data.HasCheated = false;
 
             return true;

@@ -13,6 +13,8 @@ namespace BullsAndCows.Helpers
     internal class Scoreboard : IScoreboard
     {
         private const byte TopPlayersDisplayCount = 10;
+        private const string EnterPlayerNameMessage = "Please enter your name for the scoreboard: ";
+        private const string EmptyScoreboardMessage = "The scoreboard is empty.";
 
         public Scoreboard(IScoreNotifier notifier, IScoreSerializer serializer, IActionsReader actionsReader)
         {
@@ -38,7 +40,7 @@ namespace BullsAndCows.Helpers
         {
             if (this.Scores.Count < TopPlayersDisplayCount || this.Scores[TopPlayersDisplayCount - 1].NumberOfGuesses > guessAttempts)
             {
-                this.Notifier.Notify("Please enter your name for the scoreboard: ");
+                this.Notifier.Notify(EnterPlayerNameMessage);
 
                 var playerName = this.ActionsReader.Read();
 
@@ -65,7 +67,7 @@ namespace BullsAndCows.Helpers
             }
             else
             {
-                this.Notifier.Notify("The scoreboard is empty.");
+                this.Notifier.Notify(EmptyScoreboardMessage);
             }
         }
     }

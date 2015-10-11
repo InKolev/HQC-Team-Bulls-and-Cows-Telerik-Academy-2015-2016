@@ -9,6 +9,8 @@ namespace BullsAndCows.Helpers.Commands
 
     internal class DisplayCommandsListCommand : ICommand
     {
+        private const string NotifierCallMessage = "CommandsCall";
+
         public DisplayCommandsListCommand(INotifier notifier)
         {
             this.Notifier = notifier;
@@ -18,7 +20,7 @@ namespace BullsAndCows.Helpers.Commands
 
         public bool Execute()
         {
-            this.Notifier.Notify("CommandsCall");
+            this.Notifier.Notify(NotifierCallMessage);
 
             return true;
         }

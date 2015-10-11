@@ -11,6 +11,9 @@ namespace BullsAndCows.Core
 
     internal class ActionsController : IController, IRunnable
     {
+        private const string EnterCommandMessage = "Enter your Guess/Command: ";
+        private const string PlayAgainMessage = "Would you like to play again? \"y\" or \"n\" ";
+
         public ActionsController(IDataState data, INotifier notifier, INumberGenerator numberGenerator, IScoreboard scoreboard, ICommandsFactory commandsFactory, IActionsReader reader)
         {
             this.Data = data;
@@ -39,7 +42,7 @@ namespace BullsAndCows.Core
         {
             string input = string.Empty;
 
-            this.Notifier.Notify("Enter your Guess/Command: ");
+            this.Notifier.Notify(EnterCommandMessage);
 
             input = this.ActionsReader.Read();
 
@@ -63,7 +66,7 @@ namespace BullsAndCows.Core
                     this.ReadAction();
                 }
 
-                this.Notifier.Notify("Would you like to play again? \"y\" or \"n\" ");
+                this.Notifier.Notify(PlayAgainMessage);
 
                 var answer = this.ActionsReader.Read();
 
