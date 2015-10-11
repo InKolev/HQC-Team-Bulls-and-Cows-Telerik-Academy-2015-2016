@@ -1,4 +1,8 @@
-﻿
+﻿// <copyright  file="QuitGameCommand.cs" company="TA-HQC-Team-Bulls-And-Cows">
+// All rights reserved.
+// </copyright>
+// <authors>vot24100, InKolev, mdraganov</authors>
+
 namespace BullsAndCows.Helpers.Commands
 {
     using Interfaces;

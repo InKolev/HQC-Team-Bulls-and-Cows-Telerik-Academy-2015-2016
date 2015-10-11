@@ -64,7 +64,6 @@
     <Compile Include="QuitGameCommandTests.cs" />
     <Compile Include="ActionsControllerTests.cs" />
     <Compile Include="EngineTests.cs" />
-    <Compile Include="ProgramEntryPointTest.cs" />
     <Compile Include="WinGameCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>

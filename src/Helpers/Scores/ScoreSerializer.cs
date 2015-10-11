@@ -1,10 +1,15 @@
-﻿namespace BullsAndCows.Helpers
+﻿// <copyright  file="ScoreSerializer.cs" company="TA-HQC-Team-Bulls-And-Cows">
+// All rights reserved.
+// </copyright>
+// <authors>vot24100, InKolev, mdraganov</authors>
+
+namespace BullsAndCows.Helpers
 {
+    using System;
+    using System.Globalization;
     using System.Collections.Generic;
     using System.IO;
     using Interfaces;
-    using System;
-    using System.Globalization;
 
     internal class ScoreSerializer : IScoreSerializer
     {
@@ -12,7 +17,9 @@
         private static ScoreSerializer instance;
         private static object syncLock = new object();
 
-        protected ScoreSerializer() { }
+        protected ScoreSerializer()
+        {
+        }
 
         public static ScoreSerializer GetSerializer()
         {

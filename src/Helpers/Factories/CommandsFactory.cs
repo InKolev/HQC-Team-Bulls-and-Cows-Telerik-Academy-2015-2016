@@ -1,12 +1,15 @@
-﻿
+﻿// <copyright  file="CommandsFactory.cs" company="TA-HQC-Team-Bulls-And-Cows">
+// All rights reserved.
+// </copyright>
+// <authors>vot24100, InKolev, mdraganov</authors>
 
 namespace BullsAndCows.Helpers
 {
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
     using System;
     using Commands;
     using Interfaces;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
 
     internal class CommandsFactory : ICommandsFactory
     {
@@ -45,39 +48,46 @@ namespace BullsAndCows.Helpers
                             commandExecutor = new CheatCommand(this.Data, this.Notifier, this.NumberGenerator);
                             break;
                         }
+
                     case "start":
                         {
                             commandExecutor = new InitializeGameCommand(this.Data, this.Notifier, this.NumberGenerator);
                             break;
                         }
+
                     case "commands":
                         {
                             commandExecutor = new DisplayCommandsListCommand(this.Notifier);
                             break;
                         }
+
                     case "top":
                         {
                             commandExecutor = new DisplayScoreboardCommand(this.Scoreboard);
                             break;
                         }
+
                     case "quit":
                         {
                             commandExecutor = new QuitGameCommand(this.Notifier);
                             break;
                         }
+
                     case "exit":
                         {
                             commandExecutor = new ExitGameCommand(this.Notifier);
                             break;
                         }
+
                     case "empty":
                         {
                             commandExecutor = new EmptyCommand();
                             break;
                         }
+
                     default:
                         {
-                            commandExecutor = ProcessGuessAndReturnAppropriateCommand(command);
+                            commandExecutor = this.ProcessGuessAndReturnAppropriateCommand(command);
                             break;
                         }
                 }

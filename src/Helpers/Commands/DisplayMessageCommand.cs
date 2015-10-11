@@ -1,11 +1,15 @@
-﻿
+﻿// <copyright  file="DisplayMessageCommand.cs" company="TA-HQC-Team-Bulls-And-Cows">
+// All rights reserved.
+// </copyright>
+// <authors>vot24100, InKolev, mdraganov</authors>
+
 namespace BullsAndCows.Helpers.Commands
 {
     using BullsAndCows.Interfaces;
 
     internal class DisplayMessageCommand : ICommand
     {
-        public DisplayMessageCommand(INotifier notifier,bool returnValue, string message)
+        public DisplayMessageCommand(INotifier notifier, bool returnValue, string message)
         {
             this.Notifier = notifier;
             this.Message = message;

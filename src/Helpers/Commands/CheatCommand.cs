@@ -1,4 +1,8 @@
-﻿
+﻿// <copyright  file="CheatCommand.cs" company="TA-HQC-Team-Bulls-And-Cows">
+// All rights reserved.
+// </copyright>
+// <authors>vot24100, InKolev, mdraganov</authors>
+
 namespace BullsAndCows.Helpers.Commands
 {
     using System;
@@ -6,7 +10,7 @@ namespace BullsAndCows.Helpers.Commands
     using BullsAndCows.Interfaces;
     using BullsAndCows.Core;
 
-    class CheatCommand : ICommand
+    internal class CheatCommand : ICommand
     {
         public CheatCommand(IDataState data, INotifier notifier, INumberGenerator numberGenerator)
         {
@@ -40,7 +44,7 @@ namespace BullsAndCows.Helpers.Commands
                 this.Data.CheatHelper = new string(cheatHelperChars);
             }
 
-            this.Notifier.Notify(String.Format("The number looks like {0}.", this.Data.CheatHelper));
+            this.Notifier.Notify(string.Format("The number looks like {0}.", this.Data.CheatHelper));
 
             return true;
         }

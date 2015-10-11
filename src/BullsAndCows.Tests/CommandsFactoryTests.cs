@@ -13,7 +13,7 @@ namespace BullsAndCows.Tests
     public class CommandsFactoryTests
     {
         [TestMethod]
-        public void GetCommandShouldCreateInitializeGameCommandWhenStringIsStart()
+        public void GetCommandShouldCreateInitializeGameCommandWhenstringIsStart()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -25,7 +25,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateCheatCommandWhenStringIsHelp()
+        public void GetCommandShouldCreateCheatCommandWhenstringIsHelp()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -37,7 +37,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateDisplayCommandsListCommandWhenStringIsCommands()
+        public void GetCommandShouldCreateDisplayCommandsListCommandWhenstringIsCommands()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -49,7 +49,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateDisplayScoreboardCommandWhenStringIsTop()
+        public void GetCommandShouldCreateDisplayScoreboardCommandWhenstringIsTop()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -61,7 +61,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateEmptyCommandWhenStringIsEmpty()
+        public void GetCommandShouldCreateEmptyCommandWhenstringIsEmpty()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -73,7 +73,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateQuitGameCommandWhenStringIsQuit()
+        public void GetCommandShouldCreateQuitGameCommandWhenstringIsQuit()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -85,7 +85,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateExitGameCommandWhenStringIsExit()
+        public void GetCommandShouldCreateExitGameCommandWhenstringIsExit()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -97,7 +97,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateGuessCommandWhenStringIs1234()
+        public void GetCommandShouldCreateGuessCommandWhenstringIs1234()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -109,7 +109,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateDisplayMessageCommandWhenStringIs123()
+        public void GetCommandShouldCreateDisplayMessageCommandWhenstringIs123()
         {
             IDataState data = new Data();
             INotifier notifier = new ConsoleNotifier();
@@ -121,7 +121,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void GetCommandShouldCreateDisplayMessageCommandWhenStringIsGuessed()
+        public void GetCommandShouldCreateDisplayMessageCommandWhenstringIsGuessed()
         {
             IDataState data = new Data();
             data.NumberToGuess = "1234";

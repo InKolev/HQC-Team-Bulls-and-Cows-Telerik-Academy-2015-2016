@@ -1,4 +1,8 @@
-﻿
+﻿// <copyright  file="ActionsController.cs" company="TA-HQC-Team-Bulls-And-Cows">
+// All rights reserved.
+// </copyright>
+// <authors>vot24100, InKolev, mdraganov</authors>
+
 namespace BullsAndCows.Core
 {
     using System;
@@ -33,7 +37,7 @@ namespace BullsAndCows.Core
 
         public void ReadAction()
         {
-            string input = String.Empty;
+            string input = string.Empty;
 
             this.Notifier.Notify("Enter your Guess/Command: ");
 
@@ -65,7 +69,7 @@ namespace BullsAndCows.Core
 
                 if (answer.Equals("y") || answer.Equals("Y"))
                 {
-                    Run();
+                    this.Run();
                 }
                 else
                 {

@@ -1,4 +1,9 @@
-﻿namespace BullsAndCows.Helpers
+﻿// <copyright  file="Scoreboard.cs" company="TA-HQC-Team-Bulls-And-Cows">
+// All rights reserved.
+// </copyright>
+// <authors>vot24100, InKolev, mdraganov</authors>
+
+namespace BullsAndCows.Helpers
 {
     using System;
     using System.Collections.Generic;
@@ -24,6 +29,7 @@
         private IList<Score> Scores { get; set; }
 
         private IActionsReader ActionsReader { get; set; }
+
         private IScoreNotifier Notifier { get; set; }
 
         private IScoreSerializer Serializer { get; set; }

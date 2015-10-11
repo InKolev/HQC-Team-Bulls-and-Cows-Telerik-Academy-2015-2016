@@ -1,10 +1,15 @@
-﻿namespace BullsAndCows.Helpers.Commands
+﻿// <copyright  file="GuessCommand.cs" company="TA-HQC-Team-Bulls-And-Cows">
+// All rights reserved.
+// </copyright>
+// <authors>vot24100, InKolev, mdraganov</authors>
+
+namespace BullsAndCows.Helpers.Commands
 {
     using System;
     using System.Linq;
     using Interfaces;
 
-    class GuessCommand : ICommand
+    internal class GuessCommand : ICommand
     {
         public GuessCommand(IDataState data, INotifier notifier, string guess)
         {
@@ -36,7 +41,7 @@
                 }
             }
 
-            var hasRepetitions = NumberHasRepetitions(this.Guess);
+            var hasRepetitions = this.NumberHasRepetitions(this.Guess);
 
             if (hasRepetitions)
             {
@@ -45,7 +50,7 @@
             else
             {
                 this.Data.GuessAttempts++;
-                this.Notifier.Notify(String.Format("Wrong number! Bulls: {0}, Cows: {1}", this.Data.Bulls, this.Data.Cows));
+                this.Notifier.Notify(string.Format("Wrong number! Bulls: {0}, Cows: {1}", this.Data.Bulls, this.Data.Cows));
             }
 
             return true;
