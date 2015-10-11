@@ -62,12 +62,14 @@
     <Compile Include="Helpers\Commands\WinGameCommand.cs" />
     <Compile Include="Helpers\Misc\RandomNumberGenerator.cs" />
     <Compile Include="Helpers\Readers\ConsoleReader.cs" />
+    <Compile Include="Helpers\Readers\PlayerNameReader.cs" />
     <Compile Include="Helpers\Scores\ScoreSerializer.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Helpers\Notifiers\ConsoleNotifier.cs" />
     <Compile Include="Helpers\Scores\Score.cs" />
     <Compile Include="Helpers\Scores\Scoreboard.cs" />
+    <Compile Include="Helpers\Validators\Validator.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\IDataState.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Interfaces\IScoreNotifier.cs" />
     <Compile Include="Interfaces\IScoreSerializer.cs" />
     <Compile Include="Interfaces\ICommandsFactory.cs" />
+    <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
