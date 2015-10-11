@@ -10,8 +10,14 @@ namespace BullsAndCows.Interfaces
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// Interface for a runnable controller
+    /// </summary>
     public interface IRunnable
     {
+        /// <summary>
+        /// Runs the controller
+        /// </summary>
         void Run();
     }
 }

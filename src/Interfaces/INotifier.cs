@@ -5,8 +5,15 @@
 
 namespace BullsAndCows.Interfaces
 {
+    /// <summary>
+    /// Interface for a notifier
+    /// </summary>
     public interface INotifier
     {
+        /// <summary>
+        /// Notifies the user
+        /// </summary>
+        /// <param name="message">Message to be send to the user</param>
         void Notify(string message);
     }
 }

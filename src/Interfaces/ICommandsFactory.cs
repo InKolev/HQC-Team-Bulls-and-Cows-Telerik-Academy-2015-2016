@@ -16,9 +16,9 @@ namespace BullsAndCows.Interfaces
     public interface ICommandsFactory
     {
         /// <summary>
-        /// Creates a command
+        /// Creates a command based on a command string
         /// </summary>
-        /// <param name="command"></param>
+        /// <param name="command">String containing the command</param>
         /// <returns>The created command</returns>
         ICommand GetCommand(string command);
     }
