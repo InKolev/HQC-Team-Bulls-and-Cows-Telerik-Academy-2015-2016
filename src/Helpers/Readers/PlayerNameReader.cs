@@ -13,16 +13,29 @@ namespace BullsAndCows.Helpers.Readers
     internal class PlayerNameReader : IActionsReader
     {
         private const string InvalidNameMessage = "Name should be between 3 and 50 characters long! Please choose another name.";
-        private IValidator Validator { get; set; }
-        private INotifier Notifier { get; set; }
 
+        public PlayerNameReader()
+            :this(Validator.GetValidator(), new ConsoleNotifier())
+        {
+
+        }
+
+        public PlayerNameReader(IValidator validator, INotifier notifier)
+        {
+            this.InputValidator = validator;
+            this.Notifier = notifier;
+        }
+
+        private IValidator InputValidator { get; set; }
+        private INotifier Notifier { get; set; }
+        
         public string Read()
         {
             string input = Console.ReadLine().Trim(); 
 
             while (true)
             {
-                if (this.Validator.ValidateName(input))
+                if (this.InputValidator.ValidateName(input))
                 {
                     break;
                 }
