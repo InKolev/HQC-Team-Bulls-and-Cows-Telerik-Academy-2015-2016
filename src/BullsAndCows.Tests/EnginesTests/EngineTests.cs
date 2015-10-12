@@ -22,8 +22,8 @@ namespace BullsAndCows.Tests
             engine.Run();
         }
 
-        [ExpectedException(typeof(System.IO.FileNotFoundException))]
         [TestMethod]
+        [ExpectedException(typeof(System.IO.FileNotFoundException))]
         public void CheckIfEngineStartedAfterBeingInitializedDoesntThrowArgumentException()
         {
             var engine = new Engine();

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>BullsAndCows.Core.Program</StartupObject>
+    <StartupObject>BullsAndCows.Core.ProgramStart</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,7 +48,7 @@
     <Compile Include="Core\ActionsController.cs" />
     <Compile Include="Core\Data.cs" />
     <Compile Include="Core\Engine.cs" />
-    <Compile Include="Core\Program.cs" />
+    <Compile Include="Core\ProgramStart.cs" />
     <Compile Include="Helpers\Commands\EmptyCommand.cs" />
     <Compile Include="Helpers\Commands\ExitGameCommand.cs" />
     <Compile Include="Helpers\Factories\CommandsFactory.cs" />

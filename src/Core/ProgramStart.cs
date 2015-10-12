@@ -8,7 +8,7 @@ namespace BullsAndCows.Core
     /// <summary>
     /// Main Entry Point for the Application
     /// </summary>
-    internal class Program
+    internal class ProgramStart
     {
         /// <summary>
         /// The Main Entry Point for the Application
