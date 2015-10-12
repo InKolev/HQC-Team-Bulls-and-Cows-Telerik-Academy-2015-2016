@@ -21,6 +21,7 @@ namespace BullsAndCows.Tests
         {
             var mockNotifier = new Mock<IScoreNotifier>();
             mockNotifier.Setup(n => n.Notify(It.IsAny<string>())).Verifiable();
+            mockNotifier.Setup(n => n.DisplayScores(It.IsAny<IList<Score>>()));
             this.notifier = mockNotifier.Object;
 
             var mockReader = new Mock<IActionsReader>();
@@ -93,6 +94,67 @@ namespace BullsAndCows.Tests
             scoreBoard.AddToScoreboard(2, 5);
 
             mockSerializer.Verify(s => s.Save(It.IsAny<IList<Score>>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void ScoreboardShouldDisplayScoresWhenThereAreAny()
+        {
+            var mockSerializer = new Mock<IScoreSerializer>();
+            mockSerializer.Setup(s => s.Load()).Returns(this.scores);
+            mockSerializer.Setup(s => s.Save(It.IsAny<IList<Score>>()));
+            serializer = mockSerializer.Object;
+
+            var mockNotifier = new Mock<IScoreNotifier>();
+            mockNotifier.Setup(n => n.Notify(It.IsAny<string>())).Verifiable();
+            mockNotifier.Setup(n => n.DisplayScores(It.IsAny<IList<Score>>()));
+            this.notifier = mockNotifier.Object;
+
+            var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
+            scoreBoard.DisplayTopScores();
+
+            mockNotifier.Verify(n => n.DisplayScores(It.IsAny<IList<Score>>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void ScoreboardShouldNotDisplayScoresWhenThereAreNotAny()
+        {
+            this.scores = new List<Score>();
+
+            var mockSerializer = new Mock<IScoreSerializer>();
+            mockSerializer.Setup(s => s.Load()).Returns(this.scores);
+            mockSerializer.Setup(s => s.Save(It.IsAny<IList<Score>>()));
+            serializer = mockSerializer.Object;
+
+            var mockNotifier = new Mock<IScoreNotifier>();
+            mockNotifier.Setup(n => n.Notify(It.IsAny<string>())).Verifiable();
+            mockNotifier.Setup(n => n.DisplayScores(It.IsAny<IList<Score>>()));
+            this.notifier = mockNotifier.Object;
+
+            var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
+            scoreBoard.DisplayTopScores();
+
+            mockNotifier.Verify(n => n.DisplayScores(It.IsAny<IList<Score>>()), Times.Never);
+        }
+
+        [TestMethod]
+        public void ScoreboardShouldNotifyWhenThereAreNotAnyScores()
+        {
+            this.scores = new List<Score>();
+
+            var mockSerializer = new Mock<IScoreSerializer>();
+            mockSerializer.Setup(s => s.Load()).Returns(this.scores);
+            mockSerializer.Setup(s => s.Save(It.IsAny<IList<Score>>()));
+            serializer = mockSerializer.Object;
+
+            var mockNotifier = new Mock<IScoreNotifier>();
+            mockNotifier.Setup(n => n.Notify(It.IsAny<string>())).Verifiable();
+            mockNotifier.Setup(n => n.DisplayScores(It.IsAny<IList<Score>>()));
+            this.notifier = mockNotifier.Object;
+
+            var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
+            scoreBoard.DisplayTopScores();
+
+            mockNotifier.Verify(n => n.Notify(It.IsAny<string>()), Times.Once);
         }
     }
 }
