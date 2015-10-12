@@ -68,6 +68,7 @@
     <Compile Include="EnginesTests\EngineTests.cs" />
     <Compile Include="CommandsTests\WinGameCommandTests.cs" />
     <Compile Include="ScoreTests\ScoreboardTests.cs" />
+    <Compile Include="ValidatorsTests\ValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BullsAndCowsGame.csproj">
