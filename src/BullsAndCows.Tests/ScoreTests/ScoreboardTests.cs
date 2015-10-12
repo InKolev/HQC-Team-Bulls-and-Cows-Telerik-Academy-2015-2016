@@ -41,7 +41,7 @@
             var mockSerializer = new Mock<IScoreSerializer>();
             mockSerializer.Setup(s => s.Load()).Returns(this.scores);
             mockSerializer.Setup(s => s.Save(It.Is<IList<Score>>(l => l.Count == 4))).Verifiable();
-            serializer = mockSerializer.Object;
+            this.serializer = mockSerializer.Object;
 
             var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
             scoreBoard.AddToScoreboard(4, 5);
@@ -63,7 +63,7 @@
             var mockSerializer = new Mock<IScoreSerializer>();
             mockSerializer.Setup(s => s.Load()).Returns(this.scores);
             mockSerializer.Setup(s => s.Save(It.IsAny<IList<Score>>()));
-            serializer = mockSerializer.Object;
+            this.serializer = mockSerializer.Object;
 
             var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
             scoreBoard.AddToScoreboard(4, 5);
@@ -85,7 +85,7 @@
             var mockSerializer = new Mock<IScoreSerializer>();
             mockSerializer.Setup(s => s.Load()).Returns(this.scores);
             mockSerializer.Setup(s => s.Save(It.IsAny<IList<Score>>()));
-            serializer = mockSerializer.Object;
+            this.serializer = mockSerializer.Object;
 
             var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
             scoreBoard.AddToScoreboard(2, 5);

@@ -112,6 +112,7 @@ Sample Refactoring Documentation for Project “Bulls and Cows 5”
 	-   `EmptyScoreboardMessage = "The scoreboard is empty."`
 
 5.  Extracted all methods from the method in Program - Main() and introduced new interfaces, classes and methods.
+
 6.  Newly created classes and design patterns implementations:
 	-   Introduced class **ActionsController** and moved the Run and ReadUseInput functionalities in it.
 	-   Introduced class **Data** which holds the core data which is required to process  user guesses and commands, and moved the corresponding functionalities in it.
@@ -119,7 +120,7 @@ Sample Refactoring Documentation for Project “Bulls and Cows 5”
 	-   Introduced **ProgramStart** class which is the Main entry point for the application.
 	-   Introduced **Command** Pattern and the concrete classes and interfaces which follows his implementation requirements: **ICommand, CheatCommand, DisplayMessageCommand, DisplayScoreboardCommand, EmptyCommand, ExitGameCommand, GuessComand, InitializeGameCommand, QuitGameCommand and WinGameCommand**.
 	-   Introduced **Factory** Pattern and the concrete classes and interfaces which follows his implementation requirements: **ICommandsFactory, CommandsFactory**.
-	Introduced a class **RandomNumberGenerator** for generating the actual number that needs to be guessed. 
+	-	Introduced a class **RandomNumberGenerator** for generating the actual number that needs to be guessed. 
 	-   Introduced a **Bridge** Pattern and the concrete classes and interfaces which follows his implementation requirements: INotifier, IReader, IValidator, IScoreboard, ConsoleNotifier, ConsoleReader, Scoreboard, NameValidator, etc.
 	-   Introduced a **Flyweight** Pattern for the CommandsFactory class.
 	-   Introduced a **Facade** Pattern for the Engine class. Hides the whole objects  Initialization logic inside the Initialize() Method.
@@ -127,6 +128,9 @@ Sample Refactoring Documentation for Project “Bulls and Cows 5”
 	-   Introduced **LazyInitialization** Pattern for each command inside the CommandsFactory
 	-   Introduced **Singleton** Pattern for the ScoreSerializer and Validator classes.
 	-   Introduced **Memento** Pattern for the Scoreboard class.
+	
 7.  Added unit tests to examinate the code's basic functionalities, corner cases and exceptions handling for most of the classes and interfaces. **Used MOQ framework** for testing cases where a User Input is required for the application to continue execution.
+
 8.  Fixed StyleCop warnings.
-9.  Documented most of the code's fragments, including classes, interfaces and methods. (constructors and properties aren't documented because their use is obvious).
+
+9.  Documented most of the code's fragments, including classes, interfaces and methods. (constructors and properties aren't documented because their use is obvious). Generated Sandcastle .chm documentation file.
