@@ -74,7 +74,7 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void ScoreboardShouldNotAddIfScoreIsHighAndBoardIsFull()
+        public void ScoreboardShouldAddIfScoreIsHighAndBoardIsFull()
         {
             this.scores.Add(new Score(1, "Score1", 5));
             this.scores.Add(new Score(2, "Score2", 6));
