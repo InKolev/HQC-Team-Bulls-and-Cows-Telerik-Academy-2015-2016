@@ -127,3 +127,4 @@ Sample Refactoring Documentation for Project “Bulls and Cows 5”
 	Introduced **LazyInitialization** Pattern for each command inside the CommandsFactory
 	Introduced **Singleton** Pattern for the ScoreSerializer class.
 	Introduced **Memento** Pattern for the Scoreboard class.
+7.  Added unit tests to examinate the code's basic functionalities, corner cases and exceptions handling for most of the classes and interfaces. **Used MOQ framework** for testing cases where a User Input is required for the application to continue execution.
