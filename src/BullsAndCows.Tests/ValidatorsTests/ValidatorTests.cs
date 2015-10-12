@@ -15,5 +15,34 @@ namespace BullsAndCows.Tests
 
             Assert.AreSame(validator, secondValidator);
         }
+
+        [TestMethod]
+        public void ValidatorShouldReturnTrueWithValidParameter()
+        {
+            var validator = Validator.GetValidator();
+            var validation = validator.ValidateName("John Doe 42");
+
+            Assert.IsTrue(validation);
+        }
+
+        [TestMethod]
+        public void ValidatorShouldReturnFalseWithInvalidParameter()
+        {
+            var validator = Validator.GetValidator();
+            var validation = validator.ValidateName("John Doe %");
+
+            Assert.IsFalse(validation);
+        }
+
+        [TestMethod]
+        public void ValidatorShouldReturnFalseWithInvalidStringLength()
+        {
+            var validator = Validator.GetValidator();
+            var validation = validator.ValidateName("Jo");
+            var anotherValidation = validator.ValidateName(new string('a', 51));
+
+            Assert.IsFalse(validation);
+            Assert.IsFalse(anotherValidation);
+        }
     }
 }
