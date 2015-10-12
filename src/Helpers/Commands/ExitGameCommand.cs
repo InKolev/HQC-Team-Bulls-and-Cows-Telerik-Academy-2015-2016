@@ -15,6 +15,7 @@ namespace BullsAndCows.Helpers.Commands
     internal class ExitGameCommand : ICommand
     {
         private const string ExitGameMessage = "Exitting game...";
+
         public ExitGameCommand(INotifier notifier)
         {
             this.Notifier = notifier;

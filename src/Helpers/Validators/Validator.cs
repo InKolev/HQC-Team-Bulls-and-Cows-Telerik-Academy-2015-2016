@@ -1,4 +1,4 @@
-﻿// <copyright  file="ConsoleReader.cs" company="TA-HQC-Team-Bulls-And-Cows">
+﻿// <copyright  file="Validator.cs" company="TA-HQC-Team-Bulls-And-Cows">
 // All rights reserved.
 // </copyright>
 // <authors>vot24100, InKolev, mdraganov</authors>
@@ -6,9 +6,12 @@
 namespace BullsAndCows.Helpers.Validators
 {
     using System;
-    using Interfaces;
     using System.Text.RegularExpressions;
+    using Interfaces;
 
+    /// <summary>
+    /// The concrete implementation for IValidator interface.
+    /// </summary>
     internal class Validator : IValidator
     {
         private static Validator instance;
@@ -16,7 +19,6 @@ namespace BullsAndCows.Helpers.Validators
 
         protected Validator()
         {
-
         }
 
         public static Validator GetValidator()

@@ -9,6 +9,9 @@ namespace BullsAndCows.Helpers.Commands
     using System.Linq;
     using Interfaces;
 
+    /// <summary>
+    /// The core implementation for GuessComand of the ICommand interface.
+    /// </summary>
     internal class GuessCommand : ICommand
     {
         private const string IncorrectInputMessage = "Incorrect number. The guess cannot contain repeatable digits.";
@@ -26,6 +29,10 @@ namespace BullsAndCows.Helpers.Commands
 
         private string Guess { get; set; }
 
+        /// <summary>
+        /// The core logic for executing a guess command.
+        /// </summary>
+        /// <returns>Returns a bollean value - true</returns>
         public bool Execute()
         {
             this.Data.Bulls = 0;

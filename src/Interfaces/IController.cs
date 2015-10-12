@@ -11,12 +11,12 @@ namespace BullsAndCows.Interfaces
     public interface IController
     {
         /// <summary>
-        /// Notifier for the user
+        /// Gets or sets Notifier for the user
         /// </summary>
         INotifier Notifier { get; set; }
 
         /// <summary>
-        /// Reader of the user's actions
+        /// Gets or sets Reader of the user's actions
         /// </summary>
         IActionsReader ActionsReader { get; set; }
 

@@ -8,6 +8,9 @@ namespace BullsAndCows.Helpers.Commands
     using System;
     using Interfaces;
 
+    /// <summary>
+    /// The concrete implementation for Initialize Game command of the ICommand interface.
+    /// </summary>
     internal class InitializeGameCommand : ICommand
     {
         private const string NotifierIntroCallMessage = "IntroductionCall";
@@ -29,6 +32,10 @@ namespace BullsAndCows.Helpers.Commands
 
         public INumberGenerator NumberGenerator { get; private set; }
 
+        /// <summary>
+        /// The core logic for executing a Initialize Game Command.
+        /// </summary>
+        /// <returns>Return a boolean value- true.</returns>
         public bool Execute()
         {
             this.Notifier.Notify(NotifierIntroCallMessage);

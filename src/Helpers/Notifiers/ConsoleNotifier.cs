@@ -17,7 +17,7 @@ namespace BullsAndCows.Helpers
     {
         public ConsoleNotifier()
         {
-            //this.WindowWidth = Console.WindowWidth;
+            // this.WindowWidth = Console.WindowWidth;
         }
 
         // int WindowWidth { get; set; }
@@ -25,7 +25,7 @@ namespace BullsAndCows.Helpers
         /// <summary>
         /// Displays the list with the scores
         /// </summary>
-        /// <param name="scores"></param>
+        /// <param name="scores">A list of scores to be displayed.</param>
         public void DisplayScores(IList<Score> scores)
         {
             int padLeftWidth = scores.Max(x => x.PlayerName.Length);
@@ -90,9 +90,11 @@ namespace BullsAndCows.Helpers
 │ number cannot be repeated.Have fun!                 │
 └─────────────────────────────────────────────────────┘
 ";
-            //Console.WriteLine(new string('*', this.WindowWidth - 1));
+
+            // Console.WriteLine(new string('*', this.WindowWidth - 1));
             Console.WriteLine(welcomeMessage);
-            //Console.WriteLine(new string('*', this.WindowWidth - 1));
+
+            // Console.WriteLine(new string('*', this.WindowWidth - 1));
         }
 
         /// <summary>

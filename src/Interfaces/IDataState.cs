@@ -13,47 +13,47 @@ namespace BullsAndCows.Interfaces
     public interface IDataState
     {
         /// <summary>
-        /// Holds the cheat helper state
+        /// Gets or sets the cheat helper state
         /// </summary>
         string CheatHelper { get; set; }
 
         /// <summary>
-        /// Holds the number to guess
+        /// Gets or sets the number to guess
         /// </summary>
         string NumberToGuess { get; set; }
 
         /// <summary>
-        /// Holds info if the user has cheated
+        /// Gets or sets a value indicating whether the user has cheated
         /// </summary>
         bool HasCheated { get; set; }
 
         /// <summary>
-        /// Holds the start time of the game
+        /// Gets or sets the start time of the game
         /// </summary>
         DateTime StartTime { get; set; }
 
         /// <summary>
-        /// Holds the play time
+        /// Gets or sets the play time
         /// </summary>
         double PlayTime { get; set; }
 
         /// <summary>
-        /// Holds the number of guess attempts
+        /// Gets or sets the number of guess attempts
         /// </summary>
         int GuessAttempts { get; set; }
 
         /// <summary>
-        /// Holds the maximal number of permitted guess attempts
+        /// Gets or sets the maximal number of permitted guess attempts
         /// </summary>
         int GuessAttemptsMaxValue { get; set; }
 
         /// <summary>
-        /// Holds the number of bulls 
+        /// Gets or sets the number of bulls 
         /// </summary>
         int Bulls { get; set; }
 
         /// <summary>
-        /// Holds the number of cows
+        /// Gets or sets the number of cows
         /// </summary>
         int Cows { get; set; }
     }

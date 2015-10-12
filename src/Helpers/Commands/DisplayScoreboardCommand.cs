@@ -7,6 +7,9 @@ namespace BullsAndCows.Helpers.Commands
 {
     using BullsAndCows.Interfaces;
 
+    /// <summary>
+    /// The concrete implementation of display scoreboard command for ICommand interface.
+    /// </summary>
     internal class DisplayScoreboardCommand : ICommand
     {
         public DisplayScoreboardCommand(IScoreboard scoreboard)
@@ -14,8 +17,15 @@ namespace BullsAndCows.Helpers.Commands
             this.Scoreboard = scoreboard;
         }
 
+        /// <summary>
+        /// Gets or sets the scoreboard object which holds the score data.
+        /// </summary>
         public IScoreboard Scoreboard { get; private set; }
 
+        /// <summary>
+        /// The core logic for executing a DisplayScoreboard command.
+        /// </summary>
+        /// <returns>Returns a boolean value - true</returns>
         public bool Execute()
         {
             this.Scoreboard.DisplayTopScores();

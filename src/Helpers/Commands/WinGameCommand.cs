@@ -8,6 +8,9 @@ namespace BullsAndCows.Helpers.Commands
     using System;
     using BullsAndCows.Interfaces;
 
+    /// <summary>
+    /// The concrete implemenation for WinGame command of the ICommand Interface.
+    /// </summary>
     internal class WinGameCommand : ICommand
     {
         private const string CongratsMessage = "Congratulations! You have guessed the secret number.";
@@ -26,6 +29,10 @@ namespace BullsAndCows.Helpers.Commands
 
         private IDataState Data { get; set; }
 
+        /// <summary>
+        /// The core logic for executing a Win Game Command.
+        /// </summary>
+        /// <returns>Returns a boolean value - false</returns>
         public bool Execute()
         {
             this.Notifier.Notify(CongratsMessage);

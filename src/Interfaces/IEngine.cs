@@ -11,32 +11,32 @@ namespace BullsAndCows.Interfaces
     public interface IEngine
     {
         /// <summary>
-        /// Holds the data state
+        /// Gets or sets the data state
         /// </summary>
         IDataState Data { get; set; }
 
         /// <summary>
-        /// Holds the game controller
+        /// Gets or sets the game controller
         /// </summary>
         IController Controller { get; set; }
 
         /// <summary>
-        /// Holds the Scoreboard
+        /// Gets or sets the Scoreboard
         /// </summary>
         IScoreboard Scoreboard { get; set; }
 
         /// <summary>
-        /// Holds the notifier used
+        /// Gets or sets the notifier used
         /// </summary>
         IScoreNotifier Notifier { get; set; }
 
         /// <summary>
-        /// Holds the number generator 
+        /// Gets or sets the number generator 
         /// </summary>
         INumberGenerator NumberGenerator { get; set; }
 
         /// <summary>
-        /// Holds the commands factory
+        /// Gets or sets the commands factory
         /// </summary>
         ICommandsFactory CommandsFactory { get; set; }
     }
