@@ -1,4 +1,4 @@
-﻿// <copyright  file="Program.cs" company="TA-HQC-Team-Bulls-And-Cows">
+﻿// <copyright  file="ProgramStart.cs" company="TA-HQC-Team-Bulls-And-Cows">
 // All rights reserved.
 // </copyright>
 // <authors>vot24100, InKolev, mdraganov</authors>

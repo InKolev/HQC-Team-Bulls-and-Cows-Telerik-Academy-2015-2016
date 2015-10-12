@@ -16,11 +16,10 @@ namespace BullsAndCows.Helpers.Commands
     /// </summary>
     internal class EmptyCommand : ICommand
     {
-
         /// <summary>
         /// The core logic for executing the Empty command - Null object.
         /// </summary>
-        /// <returns>Returns</returns>
+        /// <returns>Returns false</returns>
         public bool Execute()
         {
             return false;

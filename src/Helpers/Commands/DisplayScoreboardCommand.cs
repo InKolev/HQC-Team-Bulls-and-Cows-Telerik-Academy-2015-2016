@@ -18,7 +18,7 @@ namespace BullsAndCows.Helpers.Commands
         }
 
         /// <summary>
-        /// Gets or sets the scoreboard object which holds the score data.
+        /// Gets the scoreboard object which holds the score data.
         /// </summary>
         public IScoreboard Scoreboard { get; private set; }
 
