@@ -1,14 +1,11 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BullsAndCows.Interfaces;
-using Moq;
-using BullsAndCows.Helpers;
-using System.Collections;
-
-namespace BullsAndCows.Tests
+﻿namespace BullsAndCows.Tests
 {
+    using System.Collections.Generic;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using BullsAndCows.Interfaces;
+    using Moq;
+    using BullsAndCows.Helpers;
+
     [TestClass]
     public class ScoreboardTests
     {

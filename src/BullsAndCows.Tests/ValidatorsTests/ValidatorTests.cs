@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BullsAndCows.Helpers.Validators;
-
-namespace BullsAndCows.Tests
+﻿namespace BullsAndCows.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using BullsAndCows.Helpers.Validators;
+
     [TestClass]
     public class ValidatorTests
     {
