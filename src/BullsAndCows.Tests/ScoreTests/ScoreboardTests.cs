@@ -38,17 +38,61 @@ namespace BullsAndCows.Tests
         }
 
         [TestMethod]
-        public void ScoreboardShouldAddNewScores()
+        public void ScoreboardShouldAddNewScoresWhenBoardIsNotFull()
         {
             var mockSerializer = new Mock<IScoreSerializer>();
             mockSerializer.Setup(s => s.Load()).Returns(this.scores);
-            mockSerializer.Setup(s => s.Save(It.Is<List<Score>>(l => l.Count == 4))).Verifiable();
+            mockSerializer.Setup(s => s.Save(It.Is<IList<Score>>(l => l.Count == 4))).Verifiable();
             serializer = mockSerializer.Object;
 
-            var scorBoard = new Scoreboard(notifier, serializer, actionsReader);
-            scorBoard.AddToScoreboard(4, 5);
+            var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
+            scoreBoard.AddToScoreboard(4, 5);
 
             mockSerializer.Verify();
+        }
+
+        [TestMethod]
+        public void ScoreboardShouldNotAddIfScoreIsLowAndBoardIsFull()
+        {
+            this.scores.Add(new Score(1, "Score1", 5));
+            this.scores.Add(new Score(2, "Score2", 6));
+            this.scores.Add(new Score(3, "Score3", 7));
+            this.scores.Add(new Score(1, "Score1", 5));
+            this.scores.Add(new Score(2, "Score2", 6));
+            this.scores.Add(new Score(3, "Score3", 7));
+            this.scores.Add(new Score(3, "Score3", 7));
+
+            var mockSerializer = new Mock<IScoreSerializer>();
+            mockSerializer.Setup(s => s.Load()).Returns(this.scores);
+            mockSerializer.Setup(s => s.Save(It.IsAny<IList<Score>>()));
+            serializer = mockSerializer.Object;
+
+            var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
+            scoreBoard.AddToScoreboard(4, 5);
+
+            mockSerializer.Verify(s => s.Save(It.IsAny<IList<Score>>()), Times.Never);
+        }
+
+        [TestMethod]
+        public void ScoreboardShouldNotAddIfScoreIsHighAndBoardIsFull()
+        {
+            this.scores.Add(new Score(1, "Score1", 5));
+            this.scores.Add(new Score(2, "Score2", 6));
+            this.scores.Add(new Score(3, "Score3", 7));
+            this.scores.Add(new Score(1, "Score1", 5));
+            this.scores.Add(new Score(2, "Score2", 6));
+            this.scores.Add(new Score(3, "Score3", 7));
+            this.scores.Add(new Score(3, "Score3", 7));
+
+            var mockSerializer = new Mock<IScoreSerializer>();
+            mockSerializer.Setup(s => s.Load()).Returns(this.scores);
+            mockSerializer.Setup(s => s.Save(It.IsAny<IList<Score>>()));
+            serializer = mockSerializer.Object;
+
+            var scoreBoard = new Scoreboard(notifier, serializer, actionsReader);
+            scoreBoard.AddToScoreboard(2, 5);
+
+            mockSerializer.Verify(s => s.Save(It.IsAny<IList<Score>>()), Times.Once);
         }
     }
 }
