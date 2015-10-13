@@ -5,12 +5,9 @@
 #High-Quality Programming Code <br/>Team Bulls and Cows Telerik Academy 2015-2016
 
 ##Contributors:
-* Lubomir Durankev ([@ lubzey](https://github.com/lubzey))
-* Marian Draganov ([@ mdraganov](https://github.com/mdraganov))
-* Marin Jelev ([@ MrNiceGuy92](https://github.com/MrNiceGuy92))
+* Mariyan Draganov ([@ mdraganov](https://github.com/mdraganov))
 * Mladen Savov ([@ vot24100](https://github.com/vot24100))
 * Ivan Kolev ([@ InKolev](https://github.com/InKolev))
-* Toma Marinov([@]())
 
 Teamwork Assignment
 --------
